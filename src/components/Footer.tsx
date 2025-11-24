@@ -231,6 +231,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
             className="space-y-6"
           >
             <Link href="/" className="flex items-center space-x-3 group">
@@ -261,7 +262,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.05, duration: 0.4 }}
           >
             <h3 className="text-lg font-bold text-[#EAE59B] mb-6 tracking-wider">
               Quick Links
@@ -286,7 +287,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
           >
             <h3 className="text-lg font-bold text-[#EAE59B] mb-6 tracking-wider">
               Follow Us
@@ -319,7 +320,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 0.15, duration: 0.4 }}
           >
             <h3 className="text-lg font-bold text-[#EAE59B] mb-6 tracking-wider">
               Get in Touch

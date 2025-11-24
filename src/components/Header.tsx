@@ -1,11 +1,10 @@
-
-
 "use client";
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -18,8 +17,15 @@ const navItems = [
 export default function Header() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
+  const isHomePath = pathname === "/";
 
   useEffect(() => {
+    if (!isHomePath) {
+      return;
+    }
+
     const handleScroll = () => {
       const sections = navItems.map((item) => item.id);
       const scrollPosition = window.scrollY + 150;
@@ -37,66 +43,68 @@ export default function Header() {
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePath]);
 
   const scrollToSection = (sectionId: string) => {
+    const isHomePath = pathname === "/";
+
+    if (!isHomePath) {
+      const hash = sectionId === "home" ? "" : `#${sectionId}`;
+      router.push(`/${hash}`);
+      setMobileMenuOpen(false);
+      return;
+    }
+
     const element = document.getElementById(sectionId);
     if (element) {
       const headerHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerHeight;
 
       window.scrollTo({
         top: offsetPosition,
         behavior: "smooth",
       });
 
-      // Close mobile menu after click
       setMobileMenuOpen(false);
     }
   };
 
+  const currentActiveSection = isHomePath ? activeSection : "home";
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#101E38]/95 backdrop-blur-md border-b border-[#EAE59B]/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#101E38]/95 backdrop-blur-md border-b border-[#EAE59B]/20 py-1 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto  px-4  w-full">
+        <div className="flex items-center justify-between h-20 w-full">
           {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
-            className="flex items-center space-x-3 group cursor-pointer"
+            className="flex items-center space-x-2 sm:space-x-3 group cursor-pointer shrink-0"
           >
-            <Link href="/" className="flex items-center space-x-1 group">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="relative w-16 h-16 md:w-20 md:h-20"
-              >
+            <Link href="/" className="flex items-center group">
+              <div className="relative w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 shrink-0">
                 <Image
-                  src="/logo1.png"
+                  src="/logo3.png"
                   alt="TFC Logo"
                   width={80}
                   height={80}
                   priority
                   className="object-contain"
                 />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="flex flex-col text-start"
-              >
-                <span className="text-lg md:text-xl font-bold text-[#EAE59B] group-hover:text-[#EAE59B]/80 transition-colors">
+              </div>
+              <div className="flex flex-col text-start">
+                <span className="text-sm sm:text-lg md:text-xl font-bold text-[#EAE59B] group-hover:text-[#EAE59B]/80 transition-colors whitespace-nowrap">
                   Thunderbolts FC
                 </span>
-              </motion.div>
+              </div>
             </Link>
           </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => {
-              const isActive = activeSection === item.id;
+              const isActive = currentActiveSection === item.id;
               return (
                 <button
                   key={item.id}
@@ -116,7 +124,11 @@ export default function Header() {
                     <motion.div
                       layoutId="activeIndicator"
                       className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-1 bg-[#EAE59B] rounded-full"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                 </button>
@@ -136,13 +148,33 @@ export default function Header() {
             >
               {mobileMenuOpen ? (
                 // X Icon
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <svg
+                  className="w-7 h-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 </svg>
               ) : (
                 // Hamburger Icon
-                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <svg
+                  className="w-7 h-7"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 </svg>
               )}
             </motion.div>
@@ -161,7 +193,7 @@ export default function Header() {
             >
               <div className="px-4 py-4 space-y-0">
                 {navItems.map((item) => {
-                  const isActive = activeSection === item.id;
+                  const isActive = currentActiveSection === item.id;
                   return (
                     <button
                       key={item.id}
