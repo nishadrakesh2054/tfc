@@ -107,10 +107,9 @@ export default function ImageSlider() {
                 <div className="absolute inset-0 bg-linear-to-r from-black/50 via-black/40 to-transparent" />
 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full px-4 sm:px-6 lg:px-8">
+                <div className="absolute inset-0 flex items-center">                  <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-0">
                     <div className="max-w-7xl mx-auto">
-                      <div className="max-w-2xl text-left">
+                      <div className="max-w-3xl text-left">
                         <motion.div
                           initial={{ opacity: 0, y: 30 }}
                           animate={{ opacity: 1, y: 0 }}
@@ -131,7 +130,7 @@ export default function ImageSlider() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight tracking-wide relative"
+                            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight md:tracking-wide relative"
                           >
                             <span className="block text-transparent bg-clip-text bg-linear-to-r from-[#EAE59B] to-[#F0D36B]">
                               {slide.title}

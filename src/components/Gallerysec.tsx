@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+// import { clsx } from "clsx";
 
 const galleryImages = [
   {
@@ -67,8 +68,7 @@ export default function GallerySec() {
               whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
               style={{ transformStyle: "preserve-3d" }}
               onClick={() => setSelectedImage(image.id)}
-              className="relative h-80 bg-black/20 border border-[#EAE59B]/30 rounded-xl 
-        overflow-hidden cursor-pointer group"
+              className="relative h-80 bg-black/20 border border-[#EAE59B]/30 rounded-xl  overflow-hidden cursor-pointer group"
             >
               {/* IMAGE */}
               <Image
@@ -80,8 +80,7 @@ export default function GallerySec() {
 
               {/* OVERLAY TEXT */}
               <div
-                className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent 
-          opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
+                className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
               >
                 <div>
                   <h3 className="text-xl font-bold text-[#EAE59B]">

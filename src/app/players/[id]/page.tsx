@@ -1,8 +1,9 @@
 "use client";
-
-import { motion } from "framer-motion";
 import Link from "next/link";
+
 import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+
 import Image from "next/image";
 
 const players = [
@@ -114,10 +115,7 @@ export default function PlayerDetails() {
       <div className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Player not found</h1>
-          <Link
-            href="/players"
-            className="text-[#EAE59B] hover:text-[#EAE59B]/80"
-          >
+          <Link href="/" className="text-[#EAE59B] hover:text-[#EAE59B]/80">
             ← Back to Players
           </Link>
         </div>
@@ -126,7 +124,7 @@ export default function PlayerDetails() {
   }
 
   return (
-    <section className="min-h-screen bg-linear-to-br from-[#12203B] via-black to-[#12203B] text-white py-52 relative overflow-hidden">
+    <section className="min-h-screen bg-linear-to-br from-[#12203B] via-black to-[#12203B] text-white py-42 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -137,15 +135,19 @@ export default function PlayerDetails() {
           }}
         />
       </div>
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         {/* Top of your PlayerDetails component */}
+
+        {/* BEAUTIFUL BACK BUTTON - WORKS 100% */}
         <Link
           href="/"
-          className="inline-block text-[#EAE59B] hover:text-[#EAE59B]/80 text-sm font-bold uppercase tracking-[0.2em] mb-16 transition-colors duration-300 group"
+          className="inline-flex items-center gap-3 text-[#EAE59B] hover:text-white text-sm font-bold uppercase tracking-[0.2em] mb-16 transition-all duration-300 group cursor-pointer border-b-2 border-transparent hover:border-[#EAE59B] pb-1"
         >
-          <span className="group-hover:-translate-x-1 inline-block transition-transform">
-            ← Back to Home
+          <span className="group-hover:-translate-x-2 transition-transform duration-300">
+            ←
+          </span>
+          <span className="group-hover:translate-x-1 transition-transform duration-300">
+            Back to Home
           </span>
         </Link>
 

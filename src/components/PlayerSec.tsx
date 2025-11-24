@@ -104,93 +104,84 @@ const players = [
     
 export default function PlayerSec() {
   return (
-    <section
-      id="players"
-      className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white py-20"
+
+<section
+id="players"
+className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white py-20"
+>
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  
+  {/* Header Section */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    className="text-left mb-16"
+  >
+    <motion.span
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-[#EAE59B] text-sm font-bold uppercase tracking-[0.2em] mb-4 block"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      tfc players
+    </motion.span>
+
+    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-white tracking-wider">
+      Meet the <span className="text-[#EAE59B]">TFC Squad</span>
+    </h1>
+
+    <div className="w-24 h-1 bg-[#EAE59B]"></div>
+  </motion.div>
+
+  {/* Players Grid */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    {players.map((player, index) => (
+      <Link key={player.id} href={`/players/${player.id}`}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-left mb-16"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ scale: 1.04 }}
+          className="relative bg-gray-900/60 backdrop-blur-xl border border-white/10 shadow-lg hover:shadow-yellow-300/20 rounded-2xl p-6 transition-all group cursor-pointer overflow-hidden"
         >
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="text-[#EAE59B] text-sm font-bold uppercase tracking-[0.2em] mb-4 block"
-          >
-            tfc players
-          </motion.span>
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-white tracking-wider">
-            Meet the <span className="text-[#EAE59B]">TFC Squad</span>
-          </h1>
-          <div className="w-24 h-1 bg-[#EAE59B]"></div>
+          {/* Glow Background */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity to-white blur-2xl"></div>
+
+          {/* Player Image */}
+          <div className="w-full flex justify-center mb-6">
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.4 }}
+              className="overflow-hidden"
+            >
+              <div className="w-52 h-52 overflow-hidden shadow-lg mx-auto rounded-lg">
+                <Image
+                  src={player.image}
+                  alt={player.name}
+                  width={208}
+                  height={208}
+                  className="object-cover w-full h-full"
+                />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Player Details */}
+          <div className="text-center relative">
+            <h3 className="text-2xl font-bold text-white tracking-wide group-hover:text-[#EAE59B] transition">
+              {player.name}
+            </h3>
+
+            <p className="text-gray-300 mt-1 text-sm uppercase tracking-wider group-hover:text-gray-200">
+              {player.position}
+            </p>
+          </div>
         </motion.div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-          {players.map((player, index) => (
-            <Link key={player.id} href={`/players/${player.id}`} passHref>
-              <motion.div
-                key={player.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.04 }}
-                className="relative bg-gray-900/60 backdrop-blur-xl border border-white/10 
-                     hover:border-yellow-300/60 shadow-lg hover:shadow-yellow-300/20 
-                     rounded-2xl p-6 transition-all group cursor-pointer overflow-hidden"
-              >
-                {/* Glow Background */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-20 
-                          transition-opacity bg-linear-to-br 
-                          from-yellow-300 to-white blur-2xl"
-                ></div>
-
-                {/* PLAYER IMAGE */}
-                <div className="w-full flex justify-center mb-6">
-                  <motion.div
-                    className=" overflow-hidden"
-                    whileHover={{ scale: 1.08 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="w-52 h-52 overflow-hidden  shadow-lg mx-auto">
-                      <Image
-                        src={player.image}
-                        alt={player.name}
-                        width={208} // width slightly larger than container
-                        height={208} // height slightly larger than container
-                        className="object-cover w-full h-full"
-                      />
-                    </div>
-                  </motion.div>
-                </div>
-
-                {/* PLAYER DATA */}
-                <div className="text-center relative">
-                  <h3
-                    className="text-2xl font-bold text-white tracking-wide 
-                           group-hover:text-yellow-300 transition"
-                  >
-                    {player.name}
-                  </h3>
-
-                  <p
-                    className="text-gray-300 mt-1 text-sm uppercase tracking-wider 
-                          group-hover:text-gray-200"
-                  >
-                    {player.position}
-                  </p>
-                </div>
-              </motion.div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
+      </Link>
+    ))}
+  </div>
+</div>
+</section>
   );
 }
