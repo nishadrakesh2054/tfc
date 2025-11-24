@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
 // import { clsx } from "clsx";
 
 const galleryImages = [
@@ -79,9 +80,7 @@ export default function GallerySec() {
               />
 
               {/* OVERLAY TEXT */}
-              <div
-                className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
-              >
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
                 <div>
                   <h3 className="text-xl font-bold text-[#EAE59B]">
                     {image.title}
@@ -91,8 +90,22 @@ export default function GallerySec() {
               </div>
             </motion.div>
           ))}
+           
         </div>
-
+        <div className=" sm:flex items-center justify-end pt-10">
+        <Link href="/gallery">
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-[#EAE59B] text-[#12203B] px-6 py-2 rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-[#12203B] hover:text-[#EAE59B] transition-all  border-transparent hover:border-[#EAE59B]"
+            >
+              explore more
+              <span className="group-hover:translate-x-1 transition-transform">
+                →
+              </span>
+            </motion.button>
+          </Link>
+          </div>
         {/* MODAL */}
         {selectedImage && (
           <motion.div

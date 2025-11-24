@@ -1,52 +1,87 @@
 "use client";
+import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+// import { clsx } from "clsx";
 
 const galleryImages = [
-  { id: 1, title: "Match Victory", category: "matches" },
-  { id: 2, title: "Training Session", category: "training" },
-  { id: 3, title: "Team Celebration", category: "matches" },
-  { id: 4, title: "Stadium View", category: "venue" },
-  { id: 5, title: "Player Action", category: "matches" },
-  { id: 6, title: "Team Photo", category: "team" },
-  { id: 7, title: "Training Ground", category: "training" },
-  { id: 8, title: "Championship Moment", category: "matches" },
-  { id: 9, title: "Fans Support", category: "fans" },
+  {
+    id: 1,
+    title: "Match Victory",
+    category: "matches",
+    photo: "/banner1.jpg",
+  },
+  {
+    id: 2,
+    title: "Training Session",
+    category: "training",
+    photo: "/banner2.jpg",
+  },
+  {
+    id: 3,
+    title: "Team Celebration",
+    category: "matches",
+    photo: "/banner3.jpg",
+  },
+  { id: 4, title: "Stadium View", category: "venue", photo: "/banner1.jpg" },
 ];
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white">
+    <section
+
+      className="min-h-screen bg-linear-to-br from-black via-gray-900 to-black text-white py-42"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-12"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-left mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-linear-to-r from-[#EAE59B] to-[#EAE59B]/80 bg-clip-text text-transparent">
-            Gallery
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-[#EAE59B] text-sm font-bold uppercase tracking-[0.2em] mb-4 block"
+          >
+            Moments on the Field
+          </motion.span>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 text-white tracking-wider">
+            Capturing the <span className="text-[#EAE59B]">Spirit of TFC</span>
           </h1>
-          <p className="text-xl text-gray-300">
-            Capturing our greatest moments
-          </p>
+          <div className="w-24 h-1 bg-[#EAE59B]"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {galleryImages.map((image, index) => (
             <motion.div
               key={image.id}
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
               style={{ transformStyle: "preserve-3d" }}
               onClick={() => setSelectedImage(image.id)}
-              className="relative h-64 bg-linear-to-br from-[#EAE59B]/20 to-[#12203B]/20 border border-[#EAE59B]/30 rounded-xl overflow-hidden cursor-pointer group"
+              className="relative h-80 bg-black/20 border border-[#EAE59B]/30 rounded-xl  overflow-hidden cursor-pointer group"
             >
-              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+              {/* IMAGE */}
+              <Image
+                src={image.photo}
+                alt={image.title}
+                fill
+                className="object-cover group-hover:scale-110 transition-all duration-500"
+              />
+
+              {/* OVERLAY TEXT */}
+              <div
+                className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4"
+              >
                 <div>
                   <h3 className="text-xl font-bold text-[#EAE59B]">
                     {image.title}
@@ -54,13 +89,11 @@ export default function Gallery() {
                   <p className="text-gray-300 text-sm">{image.category}</p>
                 </div>
               </div>
-              <div className="w-full h-full flex items-center justify-center text-6xl">
-                ⚽
-              </div>
             </motion.div>
           ))}
         </div>
 
+        {/* MODAL */}
         {selectedImage && (
           <motion.div
             initial={{ opacity: 0 }}
@@ -72,25 +105,33 @@ export default function Gallery() {
             <motion.div
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
-              className="max-w-4xl w-full bg-gray-800 border border-[#EAE59B] rounded-xl p-8"
+              className="relative w-full max-w-4xl bg-gray-900 border border-[#EAE59B] rounded-xl overflow-hidden p-2 sm:p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              <h2 className="text-3xl font-bold text-[#EAE59B] mb-4">
-                {galleryImages.find((img) => img.id === selectedImage)?.title}
-              </h2>
-              <div className="aspect-video bg-linear-to-br from-[#EAE59B]/20 to-[#12203B]/20 rounded-lg flex items-center justify-center text-9xl">
-                ⚽
-              </div>
+              {/* CLOSE ICON */}
               <button
                 onClick={() => setSelectedImage(null)}
-                className="mt-4 bg-[#EAE59B] text-[#12203B] px-6 py-2 rounded-lg font-semibold hover:bg-[#EAE59B]/90 transition-colors"
+                className="absolute -top-2 right-1 text-red-700 hover:text-[#EAE59B] text-5xl  z-50"
               >
-                Close
+                &times;
               </button>
+
+              {/* FULL IMAGE IN MODAL */}
+              <div className="relative w-full h-64 sm:h-96 md:h-[500px] rounded-lg overflow-hidden">
+                <Image
+                  src={
+                    galleryImages.find((img) => img.id === selectedImage)
+                      ?.photo || ""
+                  }
+                  alt="Selected"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
           </motion.div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

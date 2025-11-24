@@ -1,11 +1,23 @@
 "use client";
-
+import { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 export default function Navigation() {
   const pathname = usePathname();
+  // Auto-scroll to section when visiting /about, /gallery, etc.
+  useEffect(() => {
+    if (pathname !== "/") {
+      const sectionId = pathname.slice(1); // "/about" → "about"
+      const element = document.getElementById(sectionId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [pathname]);
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -19,13 +31,6 @@ export default function Navigation() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#12203B] backdrop-blur-md border-b border-[#EAE59B]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold text-[#EAE59B]"
-          >
-            ⚽ TFC
-          </motion.div>
           <div className="flex space-x-1">
             {navItems.map((item) => {
               const isActive = pathname === item.href;

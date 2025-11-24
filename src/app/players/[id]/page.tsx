@@ -140,6 +140,7 @@ export default function PlayerDetails() {
 
         {/* BEAUTIFUL BACK BUTTON - WORKS 100% */}
         <Link
+   
           href="/"
           className="inline-flex items-center gap-3 text-[#EAE59B] hover:text-white text-sm font-bold uppercase tracking-[0.2em] mb-16 transition-all duration-300 group cursor-pointer border-b-2 border-transparent hover:border-[#EAE59B] pb-1"
         >

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function AboutSection() {
   return (
@@ -50,308 +51,166 @@ export default function AboutSection() {
             className="space-y-6"
           >
             <div className="bg-[#12203B]/50 backdrop-blur-sm border-l-4 border-[#EAE59B] p-6 rounded-r-lg">
-              <p className="text-gray-200 text-lg leading-relaxed mb-4">
-                TFC (The Football Club) was founded with a vision to
-                revolutionize the world of football. We combine passion,
-                dedication, and cutting-edge technology to create an
-                unforgettable experience for players and fans alike.
+              <p className="text-gray-200 text-base text-justify  mb-2">
+                Thunderbolts Football Club (TFC) is a dynamic and ambitious
+                football club operating as a subsidiary of TDC. Established with
+                the goal of becoming a dominant force in the football landscape,
+                TFC is dedicated to achieving success at the highest levels of
+                the sport through strategic planning, talent development, and
+                competitive excellence. The club is committed to fostering a
+                culture of discipline, teamwork, and continuous improvement,
+                ensuring that it remains a formidable contender in every
+                competition it enters.
               </p>
-              <p className="text-gray-300 text-base leading-relaxed">
-                Our team consists of world-class athletes, coaches, and support
-                staff who work tirelessly to achieve excellence both on and off
-                the field. We believe in fostering talent, promoting
-                sportsmanship, and building a community that shares our love for
-                the beautiful game.
+              <p className="text-gray-300 text-base text-justify ">
+                Beyond its professional football ambitions, TFC has taken on the
+                responsibility of managing and developing the football and
+                futsal academy under TDC. This initiative is designed to create
+                a structured and well-organized talent pipeline that will
+                provide young athletes with world-class training and development
+                programs. By investing in grassroots football, TFC aims to
+                cultivate the next generation of footballers, instilling in them
+                the technical skills, mental resilience, and strategic
+                understanding needed to excel on the field.
               </p>
             </div>
 
-            {/* Mission & Vision Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-[#12203B] border border-[#EAE59B]/20 rounded-lg p-6 hover:border-[#EAE59B]/50 transition-all"
+            <Link href="/about">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#EAE59B] text-[#12203B] px-6 py-2.5 rounded-sm font-bold text-sm uppercase tracking-wider hover:bg-[#12203B] hover:text-[#EAE59B] transition-all shadow-md borde border-transparent hover:border-[#EAE59B]"
               >
-                <div className="text-3xl mb-3">🎯</div>
-                <h3 className="text-xl font-bold text-[#EAE59B] mb-2">
-                  Our Mission
-                </h3>
-                <p className="text-gray-300 text-sm">
-                  To excel on the field and inspire the next generation of
-                  football talent.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="bg-[#12203B] border border-[#EAE59B]/20 rounded-lg p-6 hover:border-[#EAE59B]/50 transition-all"
-              >
-                <div className="text-3xl mb-3">🌟</div>
-                <h3 className="text-xl font-bold text-[#EAE59B] mb-2">
-                  Our Vision
-                </h3>
-                <p className="text-gray-300 text-sm">
-                  To become a global leader in football excellence and community
-                  impact.
-                </p>
-              </motion.div>
-            </div>
+                view more
+                <span className="group-hover:translate-x-2 transition-transform">
+                  →
+                </span>
+              </motion.button>
+            </Link>
           </motion.div>
 
+          {/* Right Side – Animated Football Rolling Across the Pitch (GIF-like, but pure code) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
+            transition={{ duration: 1 }}
+            className="relative h-[480px] lg:h-[580px] flex items-center justify-center order-1 lg:order-2"
           >
-            <div className="h-[510px] rounded-lg overflow-hidden border-2 border-[#EAE59B]/30 shadow-2xl shadow-[#EAE59B]/10 bg-linear-to-br from-[#12203B] to-black relative">
-              {/* Football Field Pattern Background */}
-              <div className="absolute inset-0 opacity-20">
-                <svg
-                  className="w-full h-full"
-                  viewBox="0 0 400 600"
-                  preserveAspectRatio="none"
-                >
-                  {/* Field */}
-                  <rect width="400" height="600" fill="#0a4d2e" />
-                  {/* Center Circle */}
-                  <circle
-                    cx="200"
-                    cy="300"
-                    r="60"
+            <div className="relative w-full max-w-2xl">
+              {/* Mini Stadium Pitch */}
+              <div className="absolute inset-0 rounded-3xl overflow-hidden shadow-2xl">
+                <svg viewBox="0 0 600 700" className="w-full h-full">
+                  <defs>
+                    <linearGradient
+                      id="pitch"
+                      x1="0%"
+                      y1="0%"
+                      x2="0%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stopColor="#0f4d2f" />
+                      <stop offset="100%" stopColor="#0a3d22" />
+                    </linearGradient>
+                    <radialGradient id="spotlight">
+                      <stop
+                        offset="0%"
+                        stopColor="#EAE59B"
+                        stopOpacity="0.25"
+                      />
+                      <stop offset="100%" stopColor="#EAE59B" stopOpacity="0" />
+                    </radialGradient>
+                  </defs>
+
+                  {/* Pitch */}
+                  <rect width="600" height="700" fill="url(#pitch)" rx="30" />
+                  <rect
+                    x="60"
+                    y="100"
+                    width="480"
+                    height="500"
                     fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
+                    stroke="#ffffff"
+                    strokeWidth="12"
+                    rx="12"
                   />
-                  <circle cx="200" cy="300" r="5" fill="#EAE59B" />
-                  {/* Center Line */}
                   <line
-                    x1="200"
-                    y1="0"
-                    x2="200"
+                    x1="300"
+                    y1="100"
+                    x2="300"
                     y2="600"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
+                    stroke="#ffffff"
+                    strokeWidth="10"
                   />
-                  {/* Penalty Areas */}
-                  <rect
-                    x="0"
-                    y="200"
-                    width="80"
-                    height="200"
+                  <circle
+                    cx="300"
+                    cy="350"
+                    r="70"
                     fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
+                    stroke="#ffffff"
+                    strokeWidth="10"
                   />
-                  <rect
-                    x="320"
-                    y="200"
-                    width="80"
-                    height="200"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  {/* Goal Areas */}
-                  <rect
-                    x="0"
-                    y="250"
-                    width="30"
-                    height="100"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  <rect
-                    x="370"
-                    y="250"
-                    width="30"
-                    height="100"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  {/* Corner Arcs */}
-                  <path
-                    d="M 0 0 Q 10 0 10 10"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M 400 0 Q 390 0 390 10"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M 0 600 Q 10 600 10 590"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
-                  <path
-                    d="M 400 600 Q 390 600 390 590"
-                    fill="none"
-                    stroke="#EAE59B"
-                    strokeWidth="2"
-                  />
+                  <circle cx="300" cy="350" r="8" fill="#EAE59B" />
+
+                  {/* Stadium Spotlights */}
+                  <circle cx="150" cy="80" r="220" fill="url(#spotlight)" />
+                  <circle cx="450" cy="80" r="220" fill="url(#spotlight)" />
                 </svg>
               </div>
 
-              {/* Floating Football Icons */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative w-full h-full">
-                  {/* Large Central Football */}
-                  <motion.div
-                    animate={{
-                      y: [0, -20, 0],
-                      rotate: [0, 10, 0],
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  >
-                    <svg
-                      width="100"
-                      height="100"
-                      viewBox="0 0 100 100"
-                      className="text-[#EAE59B]"
+              {/* Rolling Football – Infinite Loop (Looks exactly like a GIF) */}
+              <div className="absolute inset-0 overflow-hidden">
+                <motion.div
+                  animate={{
+                    x: [-100, 580, -100], // rolls left → right → left
+                    y: [320, 280, 320],
+                    rotate: [0, 1080, 2160],
+                  }}
+                  transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute"
+                >
+                  <svg width="110" height="110" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="#EAE59B" />
+                    <path
+                      d="M50 8 L64 30 L86 36 L68 56 L76 80 L50 68 L24 80 L32 56 L14 36 L36 30 Z"
+                      fill="#12203B"
+                    />
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="16"
+                      fill="#12203B"
+                      opacity="0.4"
+                    />
+                    {/* Glow ring */}
+                    <circle
+                      cx="50"
+                      cy="50"
+                      r="50"
+                      fill="none"
+                      stroke="#EAE59B"
+                      strokeWidth="6"
+                      opacity="0"
                     >
-                      <circle
-                        cx="50"
-                        cy="50"
-                        r="45"
-                        fill="currentColor"
-                        opacity="0.2"
+                      <animate
+                        attributeName="opacity"
+                        values="0;0.8;0"
+                        dur="2s"
+                        repeatCount="indefinite"
                       />
-                      <path
-                        d="M 50 10 L 60 30 L 80 30 L 65 45 L 70 65 L 50 55 L 30 65 L 35 45 L 20 30 L 40 30 Z"
-                        fill="currentColor"
-                        opacity="0.8"
-                      />
-                      <circle cx="50" cy="50" r="8" fill="currentColor" />
-                    </svg>
-                  </motion.div>
-
-                  {/* Floating Trophy */}
-                  <motion.div
-                    animate={{
-                      y: [0, -15, 0],
-                      x: [0, 5, 0],
-                    }}
-                    transition={{
-                      duration: 2.5,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: 0.5,
-                    }}
-                    className="absolute top-20 right-20"
-                  >
-                    <svg
-                      width="80"
-                      height="80"
-                      viewBox="0 0 100 100"
-                      className="text-[#EAE59B]"
-                    >
-                      <path
-                        d="M 30 20 L 30 50 Q 30 60 40 60 L 60 60 Q 70 60 70 50 L 70 20 L 30 20 Z"
-                        fill="currentColor"
-                        opacity="0.9"
-                      />
-                      <rect
-                        x="45"
-                        y="60"
-                        width="10"
-                        height="20"
-                        fill="currentColor"
-                        opacity="0.9"
-                      />
-                      <rect
-                        x="35"
-                        y="80"
-                        width="30"
-                        height="5"
-                        fill="currentColor"
-                        opacity="0.9"
-                      />
-                      <circle cx="50" cy="35" r="8" fill="#12203B" />
-                    </svg>
-                  </motion.div>
-
-                  {/* Floating Football */}
-                  <motion.div
-                    animate={{
-                      y: [0, -10, 0],
-                      rotate: [0, 360],
-                    }}
-                    transition={{
-                      y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-                      rotate: {
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "linear",
-                      },
-                    }}
-                    className="absolute bottom-20 left-20"
-                  >
-                    <svg
-                      width="60"
-                      height="60"
-                      viewBox="0 0 100 100"
-                      className="text-[#EAE59B]"
-                    >
-                      <ellipse
-                        cx="50"
-                        cy="50"
-                        rx="35"
-                        ry="30"
-                        fill="currentColor"
-                        opacity="0.8"
-                      />
-                      <path
-                        d="M 50 20 Q 65 30 65 50 Q 65 70 50 80 Q 35 70 35 50 Q 35 30 50 20 Z"
-                        fill="none"
-                        stroke="#12203B"
-                        strokeWidth="2"
-                      />
-                      <path
-                        d="M 20 50 Q 30 35 50 35 Q 70 35 80 50 Q 70 65 50 65 Q 30 65 20 50 Z"
-                        fill="none"
-                        stroke="#12203B"
-                        strokeWidth="2"
-                      />
-                    </svg>
-                  </motion.div>
-
-                  {/* Stats Badges */}
-                  <div className="absolute top-10 left-10 bg-[#12203B] border-2 border-[#EAE59B] rounded-full p-3">
-                    <span className="text-[#EAE59B] font-bold text-sm">
-                      2020
-                    </span>
-                  </div>
-                  <div className="absolute bottom-10 right-10 bg-[#12203B] border-2 border-[#EAE59B] rounded-full p-3">
-                    <span className="text-[#EAE59B] font-bold text-sm">
-                      15+
-                    </span>
-                  </div>
-                </div>
+                    </circle>
+                  </svg>
+                </motion.div>
               </div>
+
+              {/* Subtle glow orbs */}
+              <div className="absolute -top-20 -left-20 w-80 h-80 bg-[#EAE59B]/20 rounded-full blur-3xl -z-10" />
+              <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#EAE59B]/15 rounded-full blur-3xl -z-10" />
             </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-[#EAE59B]/10 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#EAE59B]/5 rounded-full blur-3xl"></div>
           </motion.div>
         </div>
 
@@ -366,22 +225,27 @@ export default function AboutSection() {
           <h2 className="text-2xl md:text-2xl lg:text-3xl font-bold text-white mb-8 text-left">
             Our <span className="text-[#EAE59B]">Values</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
             {[
               {
                 title: "Excellence",
-                desc: "Striving for the highest standards in everything we do",
                 icon: "⭐",
               },
               {
+                title: "Integrity",
+                icon: "⚖️",
+              },
+              {
                 title: "Passion",
-                desc: "Fueling our love for the beautiful game every single day",
                 icon: "🔥",
               },
               {
-                title: "Unity",
-                desc: "Building a strong community that stands together",
+                title: "Community Engagement",
                 icon: "🤝",
+              },
+              {
+                title: "Innovation",
+                icon: "💡",
               },
             ].map((value, index) => (
               <motion.div
@@ -391,15 +255,12 @@ export default function AboutSection() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 + index * 0.1 }}
                 whileHover={{ scale: 1.03 }}
-                className="bg-linear-to-br from-[#12203B] to-black rounded-lg p-6 "
+                className="bg-linear-to-br from-[#12203B] to-black rounded-lg p-6"
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
                 <h3 className="text-xl font-bold text-[#EAE59B] mb-2">
                   {value.title}
                 </h3>
-                <p className="text-gray-300 text-sm leading-relaxed">
-                  {value.desc}
-                </p>
               </motion.div>
             ))}
           </div>
