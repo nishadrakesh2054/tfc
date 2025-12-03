@@ -70,26 +70,7 @@ export default function TeamSection() {
                   </h4>
                   <p>Forward</p>
                 </div>
-                <div className="content-item">
-                  <div className="content">
-                    <h6>Appearances</h6>
-                    <h5>106</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Goals</h6>
-                    <h5>29</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Assists</h6>
-                    <h5>35</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                </div>
+                
               </div>
             </div>
           </div>
@@ -111,26 +92,7 @@ export default function TeamSection() {
                   </h4>
                   <p>Forward</p>
                 </div>
-                <div className="content-item">
-                  <div className="content">
-                    <h6>Appearances</h6>
-                    <h5>106</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Goals</h6>
-                    <h5>29</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>Johan Cruyff</h6>
-                    <h5>35</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -152,26 +114,7 @@ export default function TeamSection() {
                   </h4>
                   <p>Forward</p>
                 </div>
-                <div className="content-item">
-                  <div className="content">
-                    <h6>Appearances</h6>
-                    <h5>106</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Goals</h6>
-                    <h5>29</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Assists</h6>
-                    <h5>35</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                </div>
+             
               </div>
             </div>
           </div>
@@ -193,26 +136,7 @@ export default function TeamSection() {
                   </h4>
                   <p>Forward</p>
                 </div>
-                <div className="content-item">
-                  <div className="content">
-                    <h6>Appearances</h6>
-                    <h5>106</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Goals</h6>
-                    <h5>29</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                  <div className="content">
-                    <h6>TFC Assists</h6>
-                    <h5>35</h5>
-                    <span>2025/2026</span>
-                    <h6 className="title">0</h6>
-                  </div>
-                </div>
+         
               </div>
             </div>
           </div>

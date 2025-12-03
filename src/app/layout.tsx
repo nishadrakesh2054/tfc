@@ -2,6 +2,17 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 
+// Extend Window interface for WOW.js
+declare global {
+  interface Window {
+    WOW?: {
+      new (): {
+        init: () => void;
+      };
+    };
+  }
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://thunderboltsfc.com"),
   title: {
@@ -117,33 +128,48 @@ export default function RootLayout({
           src="/assets/js/jquery-3.7.1.min.js"
           strategy="beforeInteractive"
         />
-        <Script src="/assets/js/viewport.jquery.js" strategy="lazyOnload" />
+        <Script
+          src="/assets/js/viewport.jquery.js"
+          strategy="afterInteractive"
+        />
         <Script
           src="/assets/js/bootstrap.bundle.min.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
         <Script
           src="/assets/js/jquery.nice-select.min.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
-        <Script src="/assets/js/jquery.waypoints.js" strategy="lazyOnload" />
+        <Script
+          src="/assets/js/jquery.waypoints.js"
+          strategy="afterInteractive"
+        />
         <Script
           src="/assets/js/jquery.counterup.min.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
-        <Script src="/assets/js/swiper-bundle.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/jquery.meanmenu.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/parallaxie.js" strategy="lazyOnload" />
+        <Script
+          src="/assets/js/swiper-bundle.min.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          src="/assets/js/jquery.meanmenu.min.js"
+          strategy="afterInteractive"
+        />
+        <Script src="/assets/js/parallaxie.js" strategy="afterInteractive" />
         <Script
           src="/assets/js/jquery.magnific-popup.min.js"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
         />
-        <Script src="/assets/js/wow.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/gsap.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/ScrollTrigger.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/SplitText.min.js" strategy="lazyOnload" />
-        <Script src="/assets/js/splitType.js" strategy="lazyOnload" />
-        <Script src="/assets/js/main.js" strategy="lazyOnload" />
+        <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/gsap.min.js" strategy="afterInteractive" />
+        <Script
+          src="/assets/js/ScrollTrigger.min.js"
+          strategy="afterInteractive"
+        />
+        <Script src="/assets/js/SplitText.min.js" strategy="afterInteractive" />
+        <Script src="/assets/js/splitType.js" strategy="afterInteractive" />
+        <Script src="/assets/js/main.js" strategy="afterInteractive" />
       </body>
     </html>
   );

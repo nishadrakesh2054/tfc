@@ -82,18 +82,30 @@ export default function Home() {
       }
     };
 
-    // Wait for all scripts to load
-    const checkScriptsLoaded = setInterval(() => {
-      if (window.Swiper) {
-        clearInterval(checkScriptsLoaded);
-        initializePlugins();
-      }
-    }, 100);
+    // Initialize immediately if scripts are already loaded, otherwise wait
+    if (window.Swiper && window.WOW) {
+      initializePlugins();
+    } else {
+      // Wait for all scripts to load with timeout
+      let attempts = 0;
+      const maxAttempts = 50; // 5 seconds maximum wait
 
-    // Cleanup
-    return () => {
-      clearInterval(checkScriptsLoaded);
-    };
+      const checkScriptsLoaded = setInterval(() => {
+        attempts++;
+        if (window.Swiper && window.WOW) {
+          clearInterval(checkScriptsLoaded);
+          initializePlugins();
+        } else if (attempts >= maxAttempts) {
+          clearInterval(checkScriptsLoaded);
+          console.warn("Scripts took too long to load");
+        }
+      }, 100);
+
+      // Cleanup
+      return () => {
+        clearInterval(checkScriptsLoaded);
+      };
+    }
   }, []);
 
   return (

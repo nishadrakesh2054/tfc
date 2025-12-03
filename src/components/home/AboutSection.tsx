@@ -43,15 +43,7 @@ export default function AboutSection() {
                     style={{ width: "100%", height: "auto" }}
                   />
                 </div>
-                <div className="thumb2">
-                  <Image
-                    src="/assets/img/aboutbg.png"
-                    alt="Background"
-                    width={300}
-                    height={300}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </div>
+            
               </div>
             </div>
             <div className="col-lg-6">

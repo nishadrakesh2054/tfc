@@ -34,45 +34,30 @@ export default function Team() {
       number: "07",
       name: "Bipul Shrestha",
       position: "Forward",
-      appearances: 106,
-      goals: 29,
-      assists: 35,
     },
     {
       img: "/assets/img/bipul.png",
       number: "16",
       name: "Aashish Chaudhary",
       position: "Midfielder",
-      appearances: 98,
-      goals: 15,
-      assists: 42,
     },
     {
       img: "/assets/img/bipul.png",
       number: "19",
       name: "Sagar Thapa",
       position: "Defender",
-      appearances: 112,
-      goals: 8,
-      assists: 18,
     },
     {
       img: "/assets/img/bipul.png",
       number: "10",
       name: "Rohan Sharma",
       position: "Forward",
-      appearances: 89,
-      goals: 34,
-      assists: 28,
     },
     {
       img: "/assets/img/bipul.png",
       number: "14",
       name: "Suraj Gurung",
       position: "Goalkeeper",
-      appearances: 95,
-      goals: 0,
-      assists: 2,
     },
 
     // Added players
@@ -81,99 +66,66 @@ export default function Team() {
       number: "05",
       name: "Kiran Lama",
       position: "Defender",
-      appearances: 120,
-      goals: 4,
-      assists: 12,
     },
     {
       img: "/assets/img/bipul.png",
       number: "08",
       name: "Manish Basnet",
       position: "Midfielder",
-      appearances: 102,
-      goals: 11,
-      assists: 33,
     },
     {
       img: "/assets/img/bipul.png",
       number: "11",
       name: "Sudip Rai",
       position: "Forward",
-      appearances: 76,
-      goals: 27,
-      assists: 19,
     },
     {
       img: "/assets/img/bipul.png",
       number: "21",
       name: "Roshan Bhujel",
       position: "Defender",
-      appearances: 88,
-      goals: 3,
-      assists: 14,
     },
     {
       img: "/assets/img/bipul.png",
       number: "03",
       name: "Anish Dhami",
       position: "Defender",
-      appearances: 110,
-      goals: 2,
-      assists: 9,
     },
     {
       img: "/assets/img/bipul.png",
       number: "18",
       name: "Prem Tamang",
       position: "Midfielder",
-      appearances: 91,
-      goals: 9,
-      assists: 27,
     },
     {
       img: "/assets/img/bipul.png",
       number: "22",
       name: "Deepak Khadka",
       position: "Goalkeeper",
-      appearances: 67,
-      goals: 0,
-      assists: 1,
     },
     {
       img: "/assets/img/bipul.png",
       number: "09",
       name: "Sujan Maharjan",
       position: "Forward",
-      appearances: 82,
-      goals: 31,
-      assists: 21,
     },
     {
       img: "/assets/img/bipul.png",
       number: "06",
       name: "Bibek Karki",
       position: "Defender",
-      appearances: 118,
-      goals: 6,
-      assists: 10,
     },
     {
       img: "/assets/img/bipul.png",
       number: "12",
       name: "Niraj Bhandari",
       position: "Midfielder",
-      appearances: 94,
-      goals: 13,
-      assists: 29,
     },
     {
       img: "/assets/img/bipul.png",
       number: "17",
       name: "Kamal Thapa",
       position: "Forward",
-      appearances: 79,
-      goals: 23,
-      assists: 16,
     },
   ];
 
@@ -279,26 +231,6 @@ export default function Team() {
                         <Link href="/team-details">{player.name}</Link>
                       </h4>
                       <p>{player.position}</p>
-                    </div>
-                    <div className="content-item">
-                      <div className="content">
-                        <h6>Appearances</h6>
-                        <h5>{player.appearances}</h5>
-                        <span>2025/2026</span>
-                        <h6 className="title">0</h6>
-                      </div>
-                      <div className="content">
-                        <h6>TFC Goals</h6>
-                        <h5>{player.goals}</h5>
-                        <span>2025/2026</span>
-                        <h6 className="title">0</h6>
-                      </div>
-                      <div className="content">
-                        <h6>TFC Assists</h6>
-                        <h5>{player.assists}</h5>
-                        <span>2025/2026</span>
-                        <h6 className="title">0</h6>
-                      </div>
                     </div>
                   </div>
                 </div>

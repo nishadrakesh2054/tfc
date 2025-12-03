@@ -26,7 +26,7 @@ export default function TestimonialSection() {
                             height={50}
                           />
                         </div>
-                        <p>
+                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
                           Thunderbolts FC has given me the platform to grow as a
                           player. The coaching staff and facilities are
                           world-class!
@@ -41,7 +41,7 @@ export default function TestimonialSection() {
                               style={{ width: "auto", height: "60px" }}
                             />
                             <div className="content">
-                              <h4>Rajesh Shrestha</h4>
+                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Rajesh Shrestha</h4>
                               <span>Youth Academy Player</span>
                             </div>
                           </div>
@@ -67,7 +67,7 @@ export default function TestimonialSection() {
                             height={50}
                           />
                         </div>
-                        <p>
+                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
                           Being a fan of TFC is more than just football. The
                           passion, energy, and community make every match
                           unforgettable!
@@ -82,7 +82,7 @@ export default function TestimonialSection() {
                               style={{ width: "auto", height: "60px" }}
                             />
                             <div className="content">
-                              <h4>Sarita Karki</h4>
+                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Sarita Karki</h4>
                               <span>Season Ticket Holder</span>
                             </div>
                           </div>
@@ -108,7 +108,7 @@ export default function TestimonialSection() {
                             height={50}
                           />
                         </div>
-                        <p>
+                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
                           Proud to support TFC! The club&apos;s commitment to
                           developing local talent and competitive excellence is
                           inspiring.
@@ -123,7 +123,7 @@ export default function TestimonialSection() {
                               style={{ width: "auto", height: "60px" }}
                             />
                             <div className="content">
-                              <h4>Anil Tamang</h4>
+                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Anil Tamang</h4>
                               <span>Club Sponsor</span>
                             </div>
                           </div>
@@ -149,7 +149,7 @@ export default function TestimonialSection() {
                             height={50}
                           />
                         </div>
-                        <p>
+                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
                           TFC brought football back to our community. The
                           academy programs and fan engagement are exceptional!
                         </p>
@@ -163,7 +163,7 @@ export default function TestimonialSection() {
                               style={{ width: "auto", height: "60px" }}
                             />
                             <div className="content">
-                              <h4>Priya Adhikari</h4>
+                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Priya Adhikari</h4>
                               <span>Community Member</span>
                             </div>
                           </div>
@@ -238,7 +238,7 @@ export default function TestimonialSection() {
                     <div className="col-md-6 wow fadeInUp" data-wow-delay=".5s">
                       <div className="image">
                         <Image
-                          src="/assets/img/testimonial/testi-image.jpg"
+                          src="/assets/img/football.png"
                           alt="Testimonial"
                           width={300}
                           height={400}
