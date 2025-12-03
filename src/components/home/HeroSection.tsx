@@ -20,12 +20,21 @@ export default function HeroSection() {
         <div className="row g-4 align-items-center">
           <div className="col-lg-6">
             <div className="hero-content">
-              <h6 className="wow fadeInUp">Official Home of thunderboltsFC</h6>
-              <h1 className="hero_title tv_hero_title hero_title_1">
+              <h6 className="wow fadeInUp" style={{ fontSize: "16px" }}>
+                Home of thunderboltsFC
+              </h6>
+              <h1
+                className="hero_title tv_hero_title hero_title_1"
+                style={{ fontSize: "clamp(42px, 5vw, 70px)" }}
+              >
                 The Heartbeat of <br />
                 <span>Football</span> Lives Here
               </h1>
-              <p className="wow fadeInUp" data-wow-delay=".3s">
+              <p
+                className="wow fadeInUp"
+                data-wow-delay=".3s"
+                style={{ fontSize: "15px", lineHeight: "1.6" }}
+              >
                 Welcome to Thunderbolts FC — the powerhouse of football
                 excellence. From elite training to rising talent, this is where
                 commitment, passion, and the future of the game come alive.
