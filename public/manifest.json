@@ -1,0 +1,21 @@
+{
+    "name": "Thunderbolts Football Club",
+    "short_name": "TFC",
+    "description": "Premier football club in Nepal dedicated to developing elite talent and achieving competitive excellence",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#030523",
+    "theme_color": "#ff6b00",
+    "icons": [
+        {
+            "src": "/assets/img/logo3.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/img/logo3.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

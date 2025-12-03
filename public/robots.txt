@@ -1,0 +1,27 @@
+# Robots.txt for Thunderbolts Football Club
+# https://thunderboltsfc.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+
+# Sitemaps
+Sitemap: https://thunderboltsfc.com/sitemap.xml
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /assets/img/
+
+# Common Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl-delay for politeness
+Crawl-delay: 1
+
