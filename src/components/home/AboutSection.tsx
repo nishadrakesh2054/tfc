@@ -90,7 +90,11 @@ export default function AboutSection() {
                     Built on Passion. Driven by Unity.
                   </h6>
                   <h2 className="hero_title tv_hero_title hero_title_1">
-                    Built on <span>passion.</span> <br />
+                    Built on{" "}
+                    <span style={{ display: "block", marginTop: "10px" }}>
+                      passion.
+                    </span>{" "}
+                    <br />
                     Driven by Unity.
                   </h2>
                 </div>

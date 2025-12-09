@@ -2,22 +2,6 @@
 
 import { useEffect } from "react";
 
-// Extend Window interface for external libraries
-declare global {
-  interface Window {
-    Swiper?: {
-      new (selector: string, options: Record<string, unknown>): {
-        destroy: () => void;
-      };
-    };
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
-
 export default function ClientInit() {
   useEffect(() => {
     // Hide preloader after component mounts
