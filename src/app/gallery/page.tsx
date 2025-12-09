@@ -6,16 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
-// Extend Window interface for WOW.js
-declare global {
-  interface Window {
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
+// Window types are defined in types/window.d.ts
 
 interface GalleryImage {
   src: string;

@@ -145,6 +145,22 @@ export default function Header() {
                         <li>
                           <Link href="/about"> About Us </Link>
                         </li>
+
+                        <li>
+                          <Link href="/academy"> Academy </Link>
+                        </li>
+                        <li>
+                          <Link href="/event"> Events </Link>
+
+                          <ul className="submenu">
+                            <li>
+                              <Link href="/tournaments"> Tournaments </Link>
+                            </li>
+                            <li>
+                              <Link href="/workshops"> Workshops </Link>
+                            </li>
+                          </ul>
+                        </li>
                         <li>
                           <Link href="/team">Teams</Link>
                         </li>
@@ -163,9 +179,6 @@ export default function Header() {
                 </div>
               </div>
               <div className="header-right d-flex justify-content-end align-items-center">
-                <Link href="/contact" className="theme-btn d-none d-xl-block">
-                  JOIN NOW <i className="fa-solid fa-arrow-up-right"></i>
-                </Link>
                 <div className="header__hamburger d-xl-block my-auto">
                   <div className="sidebar__toggle">
                     <div className="header-bar">

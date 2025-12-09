@@ -6,16 +6,7 @@ import Header from "@/components/Header";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
-// Extend Window interface for WOW.js
-declare global {
-  interface Window {
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
+// Window types are defined in types/window.d.ts
 
 export default function TeamDetails() {
   useEffect(() => {

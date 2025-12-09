@@ -6,21 +6,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
 
-// Extend Window interface for external libraries
-declare global {
-  interface Window {
-    Swiper?: {
-      new (selector: string, options: Record<string, unknown>): {
-        destroy: () => void;
-      };
-    };
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
+// Window types are defined in types/window.d.ts
 
 export default function About() {
   useEffect(() => {
@@ -185,16 +171,6 @@ export default function About() {
                     height={600}
                     style={{ width: "100%", height: "auto" }}
                   />
-                  <div className="thumb1">
-                    <Image
-                      src="/assets/img/aboutbg.png"
-                      alt="Background"
-                      width={300}
-                      height={300}
-                      style={{ width: "100%", height: "auto" }}
-                    />
-                  </div>
-            
                 </div>
               </div>
               <div className="col-lg-6">
@@ -717,7 +693,7 @@ export default function About() {
       </section>
 
       {/* Sponsor Section */}
-      <section
+      {/* <section
         className="sponsor-section section-padding bg-cover"
         style={{ backgroundImage: "url('/assets/img/home-1/sponsor-bg.jpg')" }}
       >
@@ -872,7 +848,7 @@ export default function About() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
     </>

@@ -1,11 +1,88 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState, useRef } from "react";
+import { getTestimonials, getImageUrl, Testimonial } from "@/lib/directus";
+// Window types are defined in types/window.d.ts
 
 export default function TestimonialSection() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const swiperRef = useRef<any>(null);
+  const swiperContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Fetch testimonials
+    const fetchTestimonials = async () => {
+      try {
+        setLoading(true);
+        const data = await getTestimonials();
+        setTestimonials(data);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+        setTestimonials([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  // Initialize Swiper after testimonials are loaded
+  useEffect(() => {
+    if (
+      !loading &&
+      testimonials.length > 0 &&
+      typeof window !== "undefined" &&
+      window.Swiper
+    ) {
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(() => {
+        if (swiperContainerRef.current && !swiperRef.current && window.Swiper) {
+          const Swiper = window.Swiper;
+          swiperRef.current = new Swiper(".testimonial-slider", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: testimonials.length > 1,
+            autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            },
+            speed: 800,
+            effect: "slide",
+            navigation: {
+              nextEl: ".array-next",
+              prevEl: ".array-prev",
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            // Remove on callbacks to avoid React Compiler issues with 'this'
+            // Animations are handled via CSS instead
+          });
+        }
+      }, 300);
+
+      return () => {
+        clearTimeout(timer);
+        if (swiperRef.current) {
+          swiperRef.current.destroy(true, true);
+          swiperRef.current = null;
+        }
+      };
+    }
+  }, [loading, testimonials.length]);
+
   return (
     <section
       className="testimonial-section fix section-padding bg-cover"
       style={{
         backgroundImage: "url('/assets/img/testimonial/testimonial-bg.jpg')",
+        position: "relative",
       }}
     >
       <div className="testimonial-wrapper">
@@ -13,172 +90,198 @@ export default function TestimonialSection() {
           <div className="row g-4">
             <div className="row g-4">
               <div className="col-lg-6">
-                <div className="swiper tetsimonial-slider">
-                  <div className="swiper-wrapper">
-                    {/* Testimonial 1 */}
-                    <div className="swiper-slide">
-                      <div className="testimonial-box-slider">
-                        <div className="quote-icon">
-                          <Image
-                            src="/assets/img/testimonial/quote.svg"
-                            alt="Quote Icon"
-                            width={50}
-                            height={50}
-                          />
-                        </div>
-                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
-                          Thunderbolts FC has given me the platform to grow as a
-                          player. The coaching staff and facilities are
-                          world-class!
-                        </p>
-                        <div className="client-info-items">
-                          <div className="client-info">
-                            <Image
-                              src="/assets/img/testimonial/client.png"
-                              alt="Rajesh Shrestha"
-                              width={60}
-                              height={60}
-                              style={{ width: "auto", height: "60px" }}
-                            />
-                            <div className="content">
-                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Rajesh Shrestha</h4>
-                              <span>Youth Academy Player</span>
-                            </div>
-                          </div>
-                          <div className="star">
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Testimonial 2 */}
-                    <div className="swiper-slide">
-                      <div className="testimonial-box-slider">
-                        <div className="quote-icon">
-                          <Image
-                            src="/assets/img/testimonial/quote.svg"
-                            alt="Quote Icon"
-                            width={50}
-                            height={50}
-                          />
-                        </div>
-                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
-                          Being a fan of TFC is more than just football. The
-                          passion, energy, and community make every match
-                          unforgettable!
-                        </p>
-                        <div className="client-info-items">
-                          <div className="client-info">
-                            <Image
-                              src="/assets/img/testimonial/client.png"
-                              alt="Sarita Karki"
-                              width={60}
-                              height={60}
-                              style={{ width: "auto", height: "60px" }}
-                            />
-                            <div className="content">
-                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Sarita Karki</h4>
-                              <span>Season Ticket Holder</span>
-                            </div>
-                          </div>
-                          <div className="star">
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Testimonial 3 */}
-                    <div className="swiper-slide">
-                      <div className="testimonial-box-slider">
-                        <div className="quote-icon">
-                          <Image
-                            src="/assets/img/testimonial/quote.svg"
-                            alt="Quote Icon"
-                            width={50}
-                            height={50}
-                          />
-                        </div>
-                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
-                          Proud to support TFC! The club&apos;s commitment to
-                          developing local talent and competitive excellence is
-                          inspiring.
-                        </p>
-                        <div className="client-info-items">
-                          <div className="client-info">
-                            <Image
-                              src="/assets/img/testimonial/client.png"
-                              alt="Anil Tamang"
-                              width={60}
-                              height={60}
-                              style={{ width: "auto", height: "60px" }}
-                            />
-                            <div className="content">
-                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Anil Tamang</h4>
-                              <span>Club Sponsor</span>
-                            </div>
-                          </div>
-                          <div className="star">
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Testimonial 4 */}
-                    <div className="swiper-slide">
-                      <div className="testimonial-box-slider">
-                        <div className="quote-icon">
-                          <Image
-                            src="/assets/img/testimonial/quote.svg"
-                            alt="Quote Icon"
-                            width={50}
-                            height={50}
-                          />
-                        </div>
-                        <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
-                          TFC brought football back to our community. The
-                          academy programs and fan engagement are exceptional!
-                        </p>
-                        <div className="client-info-items">
-                          <div className="client-info">
-                            <Image
-                              src="/assets/img/testimonial/client.png"
-                              alt="Priya Adhikari"
-                              width={60}
-                              height={60}
-                              style={{ width: "auto", height: "60px" }}
-                            />
-                            <div className="content">
-                              <h4 style={{ fontSize: "16px", fontWeight: "600" }}>Priya Adhikari</h4>
-                              <span>Community Member</span>
-                            </div>
-                          </div>
-                          <div className="star">
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                            <i className="fa-solid fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                {loading ? (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      minHeight: "300px",
+                    }}
+                  >
+                    <div
+                      className="testimonial-loader"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        border: "4px solid rgba(254, 89, 0, 0.2)",
+                        borderTop: "4px solid #FE5900",
+                        borderRadius: "50%",
+                        animation: "testimonial-spin 1s linear infinite",
+                      }}
+                    ></div>
+                    <style
+                      dangerouslySetInnerHTML={{
+                        __html: `
+                        @keyframes testimonial-spin {
+                          0% { transform: rotate(0deg); }
+                          100% { transform: rotate(360deg); }
+                        }
+                        .testimonial-loader {
+                          animation: testimonial-spin 1s linear infinite;
+                        }
+                      `,
+                      }}
+                    />
                   </div>
-                </div>
+                ) : (
+                  <div
+                    ref={swiperContainerRef}
+                    className="swiper testimonial-slider"
+                  >
+                    <div className="swiper-wrapper">
+                      {testimonials && testimonials.length > 0 ? (
+                        testimonials.map((testimonial) => (
+                          <div key={testimonial.id} className="swiper-slide">
+                            <div
+                              className="testimonial-box-slider"
+                              style={{
+                                animation: "fadeInUp 0.6s ease-out",
+                              }}
+                            >
+                              <div className="quote-icon">
+                                <Image
+                                  src="/assets/img/testimonial/quote.svg"
+                                  alt="Quote Icon"
+                                  width={50}
+                                  height={50}
+                                />
+                              </div>
+                              <p
+                                style={{ fontSize: "15px", lineHeight: "1.6" }}
+                              >
+                                {testimonial.message}
+                              </p>
+                              <div className="client-info-items">
+                                <div className="client-info">
+                                  {testimonial.image ? (
+                                    <Image
+                                      src={getImageUrl(testimonial.image)}
+                                      alt={testimonial.name}
+                                      width={60}
+                                      height={60}
+                                      style={{
+                                        width: "60px",
+                                        height: "60px",
+                                        objectFit: "cover",
+                                        borderRadius: "50%",
+                                        transition: "transform 0.3s ease",
+                                      }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform =
+                                          "scale(1.1)";
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform =
+                                          "scale(1)";
+                                      }}
+                                    />
+                                  ) : (
+                                    <Image
+                                      src="/assets/img/testimonial/client.png"
+                                      alt={testimonial.name}
+                                      width={60}
+                                      height={60}
+                                      style={{ width: "auto", height: "60px" }}
+                                    />
+                                  )}
+                                  <div className="content">
+                                    <h4
+                                      style={{
+                                        fontSize: "16px",
+                                        fontWeight: "600",
+                                      }}
+                                    >
+                                      {testimonial.name}
+                                    </h4>
+                                    <span>{testimonial.role}</span>
+                                  </div>
+                                </div>
+                                <div className="star">
+                                  {[...Array(5)].map((_, index) => (
+                                    <i
+                                      key={index}
+                                      className={`fa-solid fa-star ${
+                                        index < testimonial.rating
+                                          ? ""
+                                          : "text-muted"
+                                      }`}
+                                      style={{
+                                        color:
+                                          index < testimonial.rating
+                                            ? "#FE5900"
+                                            : "#ddd",
+                                        transition: "all 0.3s ease",
+                                        animation:
+                                          index < testimonial.rating
+                                            ? "starPop 0.5s ease"
+                                            : "none",
+                                        animationDelay: `${index * 0.1}s`,
+                                      }}
+                                    ></i>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        // Fallback testimonials if none from Directus
+                        <div className="swiper-slide">
+                          <div className="testimonial-box-slider">
+                            <div className="quote-icon">
+                              <Image
+                                src="/assets/img/testimonial/quote.svg"
+                                alt="Quote Icon"
+                                width={50}
+                                height={50}
+                              />
+                            </div>
+                            <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
+                              Thunderbolts FC has given me the platform to grow
+                              as a player. The coaching staff and facilities are
+                              world-class!
+                            </p>
+                            <div className="client-info-items">
+                              <div className="client-info">
+                                <Image
+                                  src="/assets/img/testimonial/client.png"
+                                  alt="Default Member"
+                                  width={60}
+                                  height={60}
+                                  style={{ width: "auto", height: "60px" }}
+                                />
+                                <div className="content">
+                                  <h4
+                                    style={{
+                                      fontSize: "16px",
+                                      fontWeight: "600",
+                                    }}
+                                  >
+                                    Team Member
+                                  </h4>
+                                  <span>Player</span>
+                                </div>
+                              </div>
+                              <div className="star">
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {/* Pagination dots */}
+                    <div
+                      className="swiper-pagination"
+                      style={{ position: "relative", marginTop: "20px" }}
+                    ></div>
+                  </div>
+                )}
               </div>
               <div className="col-lg-6">
                 <div className="testimonial-right-items">
@@ -201,7 +304,21 @@ export default function TestimonialSection() {
                         />
                       </div>
                       <div className="array-button d-flex align-items-center">
-                        <button className="array-prev">
+                        <button
+                          className="array-prev"
+                          style={{
+                            transition: "all 0.3s ease",
+                            cursor: "pointer",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "scale(1.1)";
+                            e.currentTarget.style.opacity = "1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "scale(1)";
+                            e.currentTarget.style.opacity = "0.72";
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="20"
@@ -217,7 +334,21 @@ export default function TestimonialSection() {
                             </g>
                           </svg>
                         </button>
-                        <button className="array-next">
+                        <button
+                          className="array-next"
+                          style={{
+                            transition: "all 0.3s ease",
+                            cursor: "pointer",
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "scale(1.1)";
+                            e.currentTarget.style.opacity = "1";
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "scale(1)";
+                            e.currentTarget.style.opacity = "0.72";
+                          }}
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -253,6 +384,65 @@ export default function TestimonialSection() {
           </div>
         </div>
       </div>
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes starPop {
+          0% {
+            transform: scale(0.8);
+            opacity: 0.5;
+          }
+          50% {
+            transform: scale(1.2);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+
+        .testimonial-slider .swiper-slide {
+          transition: opacity 0.5s ease-in-out;
+        }
+
+        .testimonial-slider .swiper-slide-active {
+          opacity: 1 !important;
+        }
+
+        .swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(254, 89, 0, 0.3);
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: #fe5900;
+          transform: scale(1.2);
+        }
+
+        .testimonial-box-slider {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-box-slider:hover {
+          transform: translateY(-5px);
+        }
+        `,
+        }}
+      />
     </section>
   );
 }

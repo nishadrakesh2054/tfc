@@ -14,21 +14,11 @@ export default function SponsorSection() {
           </h2>
         </div>
         <div className="sponsor-wrapper-21">
-          <div style={{ overflow: "hidden" }}>
-            <div className="sponsor-wrap" style={{ gap: "0", rowGap: "0" }}>
-              {/* Row 1: 3 logos */}
-              <div
-                className="sponsor-box-items"
-                style={{
-                  margin: "0",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+          <div className="table-responsive">
+            <div className="sponsor-wrap">
+              <div className="sponsor-box-items">
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/pinklogo.png"
                     alt="Pink Logo Partner"
@@ -37,17 +27,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/tbc.png"
                     alt="TBC Partner"
@@ -56,17 +42,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/noc.png"
                     alt="NOC Partner"
@@ -75,28 +57,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-              </div>
-
-              {/* Row 2: 4 logos */}
-              <div
-                className="sponsor-box-items"
-                style={{
-                  margin: "0",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/logo3.png"
                     alt="TFC Logo"
@@ -105,17 +72,30 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+              </div>
+              <div className="sponsor-box-items">
+                <div className="sponsor-img">
+                  <Image
+                    src="/assets/img/logo3.png"
+                    alt="TFC Logo"
+                    width={110}
+                    height={75}
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxWidth: "110px",
+                      maxHeight: "75px",
+                    }}
+                  />
+                </div>
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/pinklogo.png"
                     alt="Pink Logo Partner"
@@ -124,17 +104,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/tbc.png"
                     alt="TBC Partner"
@@ -143,17 +119,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/tfclogo/noc.png"
                     alt="NOC Partner"
@@ -162,66 +134,13 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
-              </div>
-
-              {/* Row 3: 3 logos */}
-              <div
-                className="sponsor-box-items"
-                style={{
-                  margin: "0",
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
-                  <Image
-                    src="/assets/img/tfclogo/pinklogo.png"
-                    alt="Pink Logo Partner"
-                    width={110}
-                    height={75}
-                    style={{
-                      width: "auto",
-                      height: "auto",
-                      maxHeight: "75px",
-                      maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
-                  <Image
-                    src="/assets/img/tfclogo/tbc.png"
-                    alt="TBC Partner"
-                    width={110}
-                    height={75}
-                    style={{
-                      width: "auto",
-                      height: "auto",
-                      maxHeight: "75px",
-                      maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-                <div
-                  className="sponsor-img"
-                  style={{ padding: "8px", margin: "0" }}
-                >
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
                   <Image
                     src="/assets/img/logo3.png"
                     alt="TFC Logo"
@@ -230,13 +149,74 @@ export default function SponsorSection() {
                     style={{
                       width: "auto",
                       height: "auto",
-                      maxHeight: "75px",
                       maxWidth: "110px",
-                      filter: "grayscale(100%)",
-                      opacity: 0.7,
+                      maxHeight: "75px",
                     }}
                   />
                 </div>
+              </div>
+              <div className="sponsor-box-items">
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
+                  <Image
+                    src="/assets/img/tfclogo/pinklogo.png"
+                    alt="Pink Logo Partner"
+                    width={110}
+                    height={75}
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxWidth: "110px",
+                      maxHeight: "75px",
+                    }}
+                  />
+                </div>
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
+                  <Image
+                    src="/assets/img/tfclogo/tbc.png"
+                    alt="TBC Partner"
+                    width={110}
+                    height={75}
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxWidth: "110px",
+                      maxHeight: "75px",
+                    }}
+                  />
+                </div>
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
+                  <Image
+                    src="/assets/img/tfclogo/noc.png"
+                    alt="NOC Partner"
+                    width={110}
+                    height={75}
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxWidth: "110px",
+                      maxHeight: "75px",
+                    }}
+                  />
+                </div>
+                <div className="sponsor-img bb-none"></div>
+                <div className="sponsor-img">
+                  <Image
+                    src="/assets/img/logo3.png"
+                    alt="TFC Logo"
+                    width={110}
+                    height={75}
+                    style={{
+                      width: "auto",
+                      height: "auto",
+                      maxWidth: "110px",
+                      maxHeight: "75px",
+                    }}
+                  />
+                </div>
+                <div className="sponsor-img bb-none"></div>
               </div>
             </div>
           </div>

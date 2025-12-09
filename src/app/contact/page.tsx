@@ -4,17 +4,9 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import ContactForm from "@/components/ContactForm";
 
-// Extend Window interface for WOW.js
-declare global {
-  interface Window {
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
+// Window types are defined in types/window.d.ts
 
 export default function Contact() {
   useEffect(() => {
@@ -158,80 +150,7 @@ export default function Contact() {
               <div className="col-lg-6">
                 <div className="gt-contact-right-items">
                   <h2>Send Us Message</h2>
-
-                  <form
-                    action="contact.php"
-                    id="contact-form"
-                    className="contact-form-box"
-                  >
-                    <div className="row g-4 align-items-center">
-                      <div
-                        className="col-lg-6 col-md-6 wow fadeInUp"
-                        data-wow-delay=".3s"
-                      >
-                        <h4>Your Name</h4>
-                        <div className="form-clt">
-                          <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            placeholder="Your Name"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="col-lg-6 col-md-6 wow fadeInUp"
-                        data-wow-delay=".5s"
-                      >
-                        <h4>Your Email</h4>
-                        <div className="form-clt">
-                          <input
-                            type="text"
-                            name="email"
-                            id="email2"
-                            placeholder="Your Email"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="col-lg-12 wow fadeInUp"
-                        data-wow-delay=".3s"
-                      >
-                        <h4>Your Phone Number</h4>
-                        <div className="form-clt">
-                          <input
-                            type="text"
-                            name="phone"
-                            id="phone"
-                            placeholder="Your Phone Number"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className="col-lg-12 wow fadeInUp"
-                        data-wow-delay=".3s"
-                      >
-                        <h4>Your Message</h4>
-                        <div className="form-clt">
-                          <textarea
-                            name="message"
-                            id="message"
-                            placeholder="Type your message"
-                            rows={1}
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div
-                        className="col-lg-12 wow fadeInUp"
-                        data-wow-delay=".5s"
-                      >
-                        <button className="theme-btn mt-0" type="submit">
-                          SEND MESSAGE{" "}
-                          <i className="fa-solid fa-arrow-up-right"></i>
-                        </button>
-                      </div>
-                    </div>
-                  </form>
+                  <ContactForm />
                 </div>
               </div>
             </div>

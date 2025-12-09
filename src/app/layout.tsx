@@ -1,17 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-
-// Extend Window interface for WOW.js
-declare global {
-  interface Window {
-    WOW?: {
-      new (): {
-        init: () => void;
-      };
-    };
-  }
-}
+// Window types are defined in types/window.d.ts
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thunderboltsfc.com"),
