@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 
-export default function Header() {
+function Header() {
   return (
     <>
       {/* Offcanvas Area Start */}
@@ -15,11 +16,12 @@ export default function Header() {
                 <div className="offcanvas__logo">
                   <Link href="/">
                     <Image
-                      src="/assets/img/logo3.png"
-                      alt="logo-img"
-                      width={120}
-                      height={50}
-                      style={{ width: "auto", height: "50px" }}
+                      src="/assets/img/logo2.png"
+                      alt="Thunderbolts FC Logo"
+                      width={150}
+                      height={65}
+                      style={{ width: "auto", height: "65px" }}
+                      loading="eager"
                     />
                   </Link>
                 </div>
@@ -36,15 +38,7 @@ export default function Header() {
                 Nepal.
               </p>
               <div className="mobile-menu fix mb-3"></div>
-              <div className="sidebar-image mt-4 d-none d-xl-block">
-                <Image
-                  src="/assets/img/side.png"
-                  alt="img"
-                  width={300}
-                  height={400}
-                  style={{ width: "100%", height: "auto" }}
-                />
-              </div>
+
               <div className="offcanvas__contact">
                 <h4>Contact Info</h4>
                 <ul>
@@ -89,8 +83,8 @@ export default function Header() {
                     </div>
                   </li>
                 </ul>
-                <Link href="/contact" className="theme-btn mt-4">
-                  JOIN NOW <i className="fa-solid fa-arrow-up-right"></i>
+                <Link href="/academy" className="theme-btn mt-4 rounded-pill">
+                  JOIN ACADEMY <i className="fa-solid fa-arrow-up-right"></i>
                 </Link>
                 <div className="social-icon d-flex align-items-center">
                   <a href="#">
@@ -120,12 +114,13 @@ export default function Header() {
             <div className="header-main">
               <Link href="/" className="logo">
                 <Image
-                  src="/assets/img/logo3.png"
-                  alt="img"
-                  width={180}
-                  height={80}
-                  style={{ width: "auto", height: "80px" }}
+                  src="/assets/img/logo2.png"
+                  alt="Thunderbolts FC Logo"
+                  width={150}
+                  height={65}
+                  style={{ width: "auto", height: "65px" }}
                   priority
+                  loading="eager"
                 />
               </Link>
               <div className="header-left">
@@ -178,7 +173,14 @@ export default function Header() {
                   </div>
                 </div>
               </div>
-              <div className="header-right d-flex justify-content-end align-items-center">
+
+              <div className="header-right d-flex justify-content-end align-items-center rounded-pill">
+                <Link
+                  href="/academy"
+                  className="theme-btn d-none d-xl-block rounded-pill"
+                >
+                  JOIN ACADEMY <i className="fa-solid fa-arrow-up-right"></i>
+                </Link>
                 <div className="header__hamburger d-xl-block my-auto">
                   <div className="sidebar__toggle">
                     <div className="header-bar">
@@ -195,3 +197,5 @@ export default function Header() {
     </>
   );
 }
+
+export default memo(Header);

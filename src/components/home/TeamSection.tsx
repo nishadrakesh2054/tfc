@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 
-export default function TeamSection() {
+function TeamSection() {
   return (
     <section className="team-section fix section-padding">
       <div className="container">
@@ -62,9 +63,10 @@ export default function TeamSection() {
                   width={300}
                   height={400}
                   style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
                 />
                 <h2 className="number">07</h2>
-                <div className="player-content">
+                <div className="player-content" >
                   <h4>
                     <Link href="/team-details">Shikhon Islam</Link>
                   </h4>
@@ -128,6 +130,7 @@ export default function TeamSection() {
                   width={300}
                   height={400}
                   style={{ width: "100%", height: "auto" }}
+                  loading="lazy"
                 />
                 <h2 className="number">10</h2>
                 <div className="player-content">
@@ -145,3 +148,5 @@ export default function TeamSection() {
     </section>
   );
 }
+
+export default memo(TeamSection);

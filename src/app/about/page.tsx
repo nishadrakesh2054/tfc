@@ -3,10 +3,197 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import Image from "next/image";
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
 
 // Window types are defined in types/window.d.ts
+
+interface Objective {
+  id: number;
+  icon: string;
+  title: string;
+  description: string;
+  delay: string;
+}
+
+interface CoreValue {
+  id: number;
+  title: string;
+  description: string;
+  delay: string;
+}
+
+interface Aspiration {
+  id: number;
+  title: string;
+  description: string;
+}
+
+interface Trophy {
+  id: number;
+  image: string;
+  alt: string;
+  title: string;
+  year: string;
+  delay: string;
+}
+
+const objectives: Objective[] = [
+  {
+    id: 1,
+    icon: "fa-solid fa-futbol",
+    title: "Strong Football Academy",
+    description:
+      "Establish a structured training program to identify, nurture, and develop young talents for both football and futsal under TDC.",
+    delay: ".3s",
+  },
+  {
+    id: 2,
+    icon: "fa-solid fa-users",
+    title: "Youth Development",
+    description:
+      "Provide a robust platform for aspiring footballers to grow, learn, and seamlessly transition into professional careers within the sport.",
+    delay: ".4s",
+  },
+  {
+    id: 3,
+    icon: "fa-solid fa-trophy",
+    title: "Competitive Performance",
+    description:
+      "Implement cutting-edge training methodologies and tactical strategies to strengthen the squad and ensure sustained success.",
+    delay: ".5s",
+  },
+  {
+    id: 4,
+    icon: "fa-solid fa-chart-line",
+    title: "Sustainable Club Model",
+    description:
+      "Focus on financial stability, diversified revenue streams, and strong community support to create a resilient institution.",
+    delay: ".6s",
+  },
+  {
+    id: 5,
+    icon: "fa-solid fa-handshake",
+    title: "Team Spirit & Sportsmanship",
+    description:
+      "Encourage and uphold values of discipline, teamwork, and integrity both on and off the pitch.",
+    delay: ".7s",
+  },
+  {
+    id: 6,
+    icon: "fa-solid fa-globe",
+    title: "Expand Recognition",
+    description:
+      "Enhance brand visibility through media presence, fan engagement, and participation in prestigious tournaments.",
+    delay: ".8s",
+  },
+];
+
+const coreValues: CoreValue[] = [
+  {
+    id: 1,
+    title: "Excellence",
+    description:
+      "Striving for the highest standards in training, performance, and management, ensuring continual growth and development.",
+    delay: ".3s",
+  },
+  {
+    id: 2,
+    title: "Integrity",
+    description:
+      "Upholding fairness, transparency, and ethical conduct in all operations, fostering trust and respect.",
+    delay: ".4s",
+  },
+  {
+    id: 3,
+    title: "Passion",
+    description:
+      "Encouraging a deep love for the game and unwavering commitment to growth and success.",
+    delay: ".5s",
+  },
+  {
+    id: 4,
+    title: "Innovation",
+    description:
+      "Continuously evolving our training techniques and strategies to maintain a competitive edge.",
+    delay: ".6s",
+  },
+];
+
+const aspirations: Aspiration[] = [
+  {
+    id: 1,
+    title: "Homegrown Talent Pipeline",
+    description:
+      "Establish a robust pipeline through our football and futsal academy, ensuring a steady influx of skilled players.",
+  },
+  {
+    id: 2,
+    title: "International Recognition",
+    description:
+      "Expand our reach by participating in nationally and internationally recognized tournaments.",
+  },
+  {
+    id: 3,
+    title: "State-of-the-Art Facilities",
+    description:
+      "Develop world-class training facilities for player development and high-performance training.",
+  },
+  {
+    id: 4,
+    title: "Strategic Partnerships",
+    description:
+      "Forge partnerships with sponsors, football organizations, and educational institutions to strengthen our network.",
+  },
+  {
+    id: 5,
+    title: "Inspire the Next Generation",
+    description:
+      "Set new benchmarks for success and remain a beacon of footballing excellence and ambition.",
+  },
+  {
+    id: 6,
+    title: "Community Engagement",
+    description:
+      "Build strong relationships with fans, supporters, and local stakeholders.",
+  },
+];
+
+const trophies: Trophy[] = [
+  {
+    id: 1,
+    image: "/assets/img/inner/trophy1.png",
+    alt: "NSFL Trophy",
+    title: "NSFL",
+    year: "2025",
+    delay: ".2s",
+  },
+  {
+    id: 2,
+    image: "/assets/img/inner/trophy2.png",
+    alt: "Thunderbolts Cup Trophy",
+    title: "Thunderbolts Cup",
+    year: "2025",
+    delay: ".4s",
+  },
+  {
+    id: 3,
+    image: "/assets/img/inner/trophy3.png",
+    alt: "ANFA Trophy",
+    title: "ANFA",
+    year: "2021",
+    delay: ".6s",
+  },
+  {
+    id: 4,
+    image: "/assets/img/inner/trophy4.png",
+    alt: "Nepal Super League Trophy",
+    title: "Nepal Super League",
+    year: "2023",
+    delay: ".8s",
+  },
+];
 
 export default function About() {
   useEffect(() => {
@@ -65,82 +252,62 @@ export default function About() {
   return (
     <>
       {/* Preloader */}
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            <span data-text-preloader="T" className="letters-loading">
-              {" "}
-              T{" "}
-            </span>
-            <span data-text-preloader="F" className="letters-loading">
-              {" "}
-              F{" "}
-            </span>
-            <span data-text-preloader="C" className="letters-loading">
-              {" "}
-              C{" "}
-            </span>
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            <div className="col-3 loader-section section-left">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-left">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-right">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-right">
-              <div className="bg"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
       {/* Breadcrumb */}
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                about us
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>about us</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb title="about us" />
 
       {/* About Section */}
-      <section className="about-section fix section-padding">
+      <section className="about-section fix ">
+        {/* Quote Section - Center of Screen */}
+        <style>{`
+        .quote-text-responsive {
+          font-size: clamp(28px, 5.5vw, 60px);
+        }
+        @media (min-width: 768px) and (max-width: 1199px) {
+          .quote-text-responsive {
+            font-size: clamp(32px, 4vw, 48px) !important;
+          }
+        }
+        @media (min-width: 1200px) {
+          .quote-text-responsive {
+            font-size: clamp(40px, 5vw, 60px) !important;
+          }
+        }
+      `}</style>
+        <div className="container">
+          <div className="row">
+            <div className="col-12">
+              <div
+                className="section-title text-center wow fadeInUp"
+                data-wow-delay=".2s"
+                style={{
+                  padding: "40px 20px",
+                  marginBottom: "30px",
+                }}
+              >
+                <h2
+                  className="quote-text hero_title tv_hero_title hero_title_1 quote-text-responsive"
+                  style={{
+                    fontWeight: "900",
+                    lineHeight: "1.2",
+                    color: "#2c3e50",
+                    textTransform: "uppercase",
+                    letterSpacing: "clamp(1px, 0.2vw, 2px)",
+                    wordBreak: "break-word",
+                  }}
+                >
+                  Rise with <span>Thunder</span>
+                  <br />
+                  Rise for <span>Nepali Football</span>
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="left-shape">
           <Image
             src="/assets/img/home-1/about/left-shape.png"
@@ -159,85 +326,21 @@ export default function About() {
             style={{ width: "auto", height: "auto" }}
           />
         </div>
-        <div className="container">
-          <div className="about-wrapper">
-            <div className="row g-4">
-              <div className="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-                <div className="about-image">
-                  <Image
-                    src="/assets/img/aboutmiddle.png"
-                    alt="About Thunderbolts FC"
-                    width={500}
-                    height={600}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <div className="about-content">
-                  <div className="section-title mb-0">
-                    <h6 className="wow fadeInUp">
-                      THUNDERBOLTS FOOTBALL CLUB (TFC)
-                    </h6>
-                    <h2 className="hero_title tv_hero_title hero_title_1">
-                      More than a club. A <span>movement.</span>
-                    </h2>
-                  </div>
-                  <p className="about-text wow fadeInUp" data-wow-delay=".3s">
-                    Thunderbolts Football Club (TFC) is a dynamic and ambitious
-                    football club operating as a subsidiary of TDC. Established
-                    with the goal of becoming a dominant force in the football
-                    landscape, TFC is dedicated to achieving success at the
-                    highest levels of the sport through strategic planning,
-                    talent development, and competitive excellence.
-                  </p>
-                  <p className="about-text wow fadeInUp" data-wow-delay=".4s">
-                    Beyond professional football, TFC manages and develops the
-                    football and futsal academy under TDC, creating a structured
-                    talent pipeline with world-class training programs for young
-                    athletes.
-                  </p>
-                  <div
-                    className="about-list-items wow fadeInUp"
-                    data-wow-delay=".5s"
-                  >
-                    <ul>
-                      <li>
-                        <i className="fa-solid fa-circle-check"></i> Elite
-                        Player Development
-                      </li>
-                      <li>
-                        <i className="fa-solid fa-circle-check"></i> Football &
-                        Futsal Academy
-                      </li>
-                    </ul>
-                    <ul>
-                      <li>
-                        <i className="fa-solid fa-circle-check"></i>{" "}
-                        Professional Coaching Staff
-                      </li>
-                      <li>
-                        <i className="fa-solid fa-circle-check"></i> Strategic
-                        Excellence
-                      </li>
-                    </ul>
-                  </div>
-                  <Link
-                    href="/contact"
-                    className="theme-btn wow fadeInUp"
-                    data-wow-delay=".7s"
-                  >
-                    JOIN NOW <i className="fa-solid fa-arrow-up-right"></i>
-                  </Link>
-                </div>
-              </div>
-            </div>
+        <div className=" about-image-wrapper">
+          <div className="about-image-fill">
+            <Image
+              src="/assets/img/about1.png"
+              alt="about"
+              fill
+              priority
+              style={{ objectFit: "contain" }}
+            />
           </div>
         </div>
       </section>
 
       {/* Mission & Vision Section */}
-      <section className="about-section fix section-padding pt-0">
+      <section className="about-section fix section-padding">
         <div className="container">
           <div className="row g-4">
             <div className="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
@@ -294,129 +397,36 @@ export default function About() {
       </section>
 
       {/* Objectives Section */}
-      <section className="about-section fix section-padding pt-0 pb-0">
+      <section className="about-section fix section-padding  ">
         <div className="container">
-          <div className="section-title text-center">
+          <div className="section-title text-start">
             <h6 className="wow fadeInUp">STRATEGIC GOALS</h6>
             <h2
-              className="hero_title tv_hero_title hero_title_1 wow fadeInUp"
+              className="hero_title tv_hero_title hero_title_1 wow fadeInUp text-start"
               data-wow-delay=".2s"
             >
               Our <span>Objectives</span>
             </h2>
           </div>
           <div className="row g-4 mt-3">
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".3s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-futbol"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
+            {objectives.map((objective) => (
+              <div
+                key={objective.id}
+                className="col-lg-4 col-md-6 wow fadeInUp"
+                data-wow-delay={objective.delay}
+              >
+                <div className="about-content text-center">
+                  <div className="icon mb-3">
+                    <i
+                      className={objective.icon}
+                      style={{ fontSize: "48px", color: "var(--theme)" }}
+                    ></i>
+                  </div>
+                  <h4 style={{ color: "var(--theme)" }}>{objective.title}</h4>
+                  <p>{objective.description}</p>
                 </div>
-                <h4>Strong Football Academy</h4>
-                <p>
-                  Establish a structured training program to identify, nurture,
-                  and develop young talents for both football and futsal under
-                  TDC.
-                </p>
               </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".4s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-users"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
-                </div>
-                <h4>Youth Development</h4>
-                <p>
-                  Provide a robust platform for aspiring footballers to grow,
-                  learn, and seamlessly transition into professional careers
-                  within the sport.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-trophy"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
-                </div>
-                <h4>Competitive Performance</h4>
-                <p>
-                  Implement cutting-edge training methodologies and tactical
-                  strategies to strengthen the squad and ensure sustained
-                  success.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".6s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-chart-line"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
-                </div>
-                <h4>Sustainable Club Model</h4>
-                <p>
-                  Focus on financial stability, diversified revenue streams, and
-                  strong community support to create a resilient institution.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".7s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-handshake"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
-                </div>
-                <h4>Team Spirit & Sportsmanship</h4>
-                <p>
-                  Encourage and uphold values of discipline, teamwork, and
-                  integrity both on and off the pitch.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".8s"
-            >
-              <div className="about-content text-center">
-                <div className="icon mb-3">
-                  <i
-                    className="fa-solid fa-globe"
-                    style={{ fontSize: "48px", color: "#ff6b00" }}
-                  ></i>
-                </div>
-                <h4>Expand Recognition</h4>
-                <p>
-                  Enhance brand visibility through media presence, fan
-                  engagement, and participation in prestigious tournaments.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -424,103 +434,48 @@ export default function About() {
       {/* Core Values Section */}
       <section className="about-section fix section-padding">
         <div className="container">
-          <div className="section-title text-center">
+          <div className="section-title">
             <h6 className="wow fadeInUp">OUR FOUNDATION</h6>
             <h2
-              className="hero_title tv_hero_title hero_title_1 wow fadeInUp"
+              className="hero_title tv_hero_title hero_title_1 wow fadeInUp "
               data-wow-delay=".2s"
             >
               Core <span>Values</span>
             </h2>
           </div>
           <div className="row g-4 mt-3">
-            <div
-              className="col-lg-3 col-md-6 wow fadeInUp"
-              data-wow-delay=".3s"
-            >
+            {coreValues.map((value) => (
               <div
-                className="about-content text-center p-4 h-100 d-flex flex-column"
-                style={{
-                  border: "2px solid #ff6b00",
-                  borderRadius: "10px",
-                  minHeight: "220px",
-                }}
+                key={value.id}
+                className="col-lg-3 col-md-6 wow fadeInUp"
+                data-wow-delay={value.delay}
               >
-                <h4 style={{ color: "#ff6b00" }}>Excellence</h4>
-                <p className="flex-grow-1 d-flex align-items-center">
-                  Striving for the highest standards in training, performance,
-                  and management, ensuring continual growth and development.
-                </p>
+                <div
+                  className="about-content text-center p-4 h-100 d-flex flex-column"
+                  style={{
+                    border: "2px solid var(--theme)",
+                    borderRadius: "10px",
+                    minHeight: "220px",
+                  }}
+                >
+                  <h4 style={{ color: "var(--theme)" }}>{value.title}</h4>
+                  <p className="flex-grow-1 d-flex align-items-center">
+                    {value.description}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-6 wow fadeInUp"
-              data-wow-delay=".4s"
-            >
-              <div
-                className="about-content text-center p-4 h-100 d-flex flex-column"
-                style={{
-                  border: "2px solid #ff6b00",
-                  borderRadius: "10px",
-                  minHeight: "220px",
-                }}
-              >
-                <h4 style={{ color: "#ff6b00" }}>Integrity</h4>
-                <p className="flex-grow-1 d-flex align-items-center">
-                  Upholding fairness, transparency, and ethical conduct in all
-                  operations, fostering trust and respect.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-6 wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <div
-                className="about-content text-center p-4 h-100 d-flex flex-column"
-                style={{
-                  border: "2px solid #ff6b00",
-                  borderRadius: "10px",
-                  minHeight: "220px",
-                }}
-              >
-                <h4 style={{ color: "#ff6b00" }}>Passion</h4>
-                <p className="flex-grow-1 d-flex align-items-center">
-                  Encouraging a deep love for the game and unwavering commitment
-                  to growth and success.
-                </p>
-              </div>
-            </div>
-            <div
-              className="col-lg-3 col-md-6 wow fadeInUp"
-              data-wow-delay=".6s"
-            >
-              <div
-                className="about-content text-center p-4 h-100 d-flex flex-column"
-                style={{
-                  border: "2px solid #ff6b00",
-                  borderRadius: "10px",
-                  minHeight: "220px",
-                }}
-              >
-                <h4 style={{ color: "#ff6b00" }}>Innovation</h4>
-                <p className="flex-grow-1 d-flex align-items-center">
-                  Continuously evolving our training techniques and strategies
-                  to maintain a competitive edge.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Future Aspirations Section */}
-      <section className="about-section fix section-padding pt-0">
+      <section className="about-section fix section-padding ">
         <div className="container">
-          <div className="section-title text-center">
+          <div className="section-title text-start">
             <h6 className="wow fadeInUp">LOOKING AHEAD</h6>
             <h2
-              className="hero_title tv_hero_title hero_title_1 wow fadeInUp"
+              className="hero_title tv_hero_title hero_title_1 wow fadeInUp text-start"
               data-wow-delay=".2s"
             >
               Future <span>Aspirations</span>
@@ -530,65 +485,32 @@ export default function About() {
             <div className="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
               <div className="about-list-items">
                 <ul style={{ listStyle: "none", padding: 0 }}>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>Homegrown Talent Pipeline:</strong> Establish a
-                    robust pipeline through our football and futsal academy,
-                    ensuring a steady influx of skilled players.
-                  </li>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>International Recognition:</strong> Expand our reach
-                    by participating in nationally and internationally
-                    recognized tournaments.
-                  </li>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>State-of-the-Art Facilities:</strong> Develop
-                    world-class training facilities for player development and
-                    high-performance training.
-                  </li>
+                  {aspirations.slice(0, 3).map((aspiration) => (
+                    <li key={aspiration.id} style={{ marginBottom: "20px" }}>
+                      <i
+                        className="fa-solid fa-circle-check"
+                        style={{ color: "var(--theme)", marginRight: "10px" }}
+                      ></i>
+                      <strong>{aspiration.title}:</strong>{" "}
+                      {aspiration.description}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
             <div className="col-lg-6 wow fadeInUp" data-wow-delay=".5s">
               <div className="about-list-items">
                 <ul style={{ listStyle: "none", padding: 0 }}>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>Strategic Partnerships:</strong> Forge partnerships
-                    with sponsors, football organizations, and educational
-                    institutions to strengthen our network.
-                  </li>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>Inspire the Next Generation:</strong> Set new
-                    benchmarks for success and remain a beacon of footballing
-                    excellence and ambition.
-                  </li>
-                  <li style={{ marginBottom: "20px" }}>
-                    <i
-                      className="fa-solid fa-circle-check"
-                      style={{ color: "#ff6b00", marginRight: "10px" }}
-                    ></i>
-                    <strong>Community Engagement:</strong> Build strong
-                    relationships with fans, supporters, and local stakeholders.
-                  </li>
+                  {aspirations.slice(3, 6).map((aspiration) => (
+                    <li key={aspiration.id} style={{ marginBottom: "20px" }}>
+                      <i
+                        className="fa-solid fa-circle-check"
+                        style={{ color: "var(--theme)", marginRight: "10px" }}
+                      ></i>
+                      <strong>{aspiration.title}:</strong>{" "}
+                      {aspiration.description}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -613,242 +535,33 @@ export default function About() {
       </section>
 
       {/* Trophy Section */}
-      <section className="trophy-section section-padding pt-0">
+      <section className="trophy-section section-padding ">
         <div className="container">
           <div className="row g-4">
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".2s"
-            >
-              <div className="trophy-box-item">
-                <Image
-                  src="/assets/img/inner/trophy1.png"
-                  alt="NSFL Trophy"
-                  width={150}
-                  height={200}
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <div className="content">
-                  <h3>NSFL</h3>
-                  <span>2025</span>
+            {trophies.map((trophy) => (
+              <div
+                key={trophy.id}
+                className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
+                data-wow-delay={trophy.delay}
+              >
+                <div className="trophy-box-item">
+                  <Image
+                    src={trophy.image}
+                    alt={trophy.alt}
+                    width={150}
+                    height={200}
+                    style={{ width: "auto", height: "auto" }}
+                  />
+                  <div className="content">
+                    <h3>{trophy.title}</h3>
+                    <span>{trophy.year}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".4s"
-            >
-              <div className="trophy-box-item">
-                <Image
-                  src="/assets/img/inner/trophy2.png"
-                  alt="Thunderbolts Cup Trophy"
-                  width={150}
-                  height={200}
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <div className="content">
-                  <h3>Thunderbolts Cup</h3>
-                  <span>2025</span>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".6s"
-            >
-              <div className="trophy-box-item">
-                <Image
-                  src="/assets/img/inner/trophy3.png"
-                  alt="ANFA Trophy"
-                  width={150}
-                  height={200}
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <div className="content">
-                  <h3>ANFA</h3>
-                  <span>2021</span>
-                </div>
-              </div>
-            </div>
-            <div
-              className="col-xl-3 col-lg-4 col-md-6 wow fadeInUp"
-              data-wow-delay=".8s"
-            >
-              <div className="trophy-box-item">
-                <Image
-                  src="/assets/img/inner/trophy4.png"
-                  alt="Nepal Super League Trophy"
-                  width={150}
-                  height={200}
-                  style={{ width: "auto", height: "auto" }}
-                />
-                <div className="content">
-                  <h3>Nepal Super League</h3>
-                  <span>2023</span>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
-
-      {/* Sponsor Section */}
-      {/* <section
-        className="sponsor-section section-padding bg-cover"
-        style={{ backgroundImage: "url('/assets/img/home-1/sponsor-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="section-title text-center">
-            <h6 className="wow fadeInUp">Events & Clubs</h6>
-            <h2 className="hero_title tv_hero_title hero_title_1">
-              Official Events & <span>valued</span> Clubs
-            </h2>
-          </div>
-          <div className="sponsor-wrapper-21">
-            <div className="table-responsive">
-              <div className="sponsor-wrap">
-                <div className="sponsor-box-items">
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/pinklogo.png"
-                      alt="Pink Logo Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/tbc.png"
-                      alt="TBC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/noc.png"
-                      alt="NOC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/logo3.png"
-                      alt="TFC Logo"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                </div>
-                <div className="sponsor-box-items">
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/logo3.png"
-                      alt="TFC Logo"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/pinklogo.png"
-                      alt="Pink Logo Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/tbc.png"
-                      alt="TBC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/noc.png"
-                      alt="NOC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/logo3.png"
-                      alt="TFC Logo"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                </div>
-                <div className="sponsor-box-items">
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/pinklogo.png"
-                      alt="Pink Logo Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/tbc.png"
-                      alt="TBC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/tfclogo/noc.png"
-                      alt="NOC Partner"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                  <div className="sponsor-img">
-                    <Image
-                      src="/assets/img/logo3.png"
-                      alt="TFC Logo"
-                      width={120}
-                      height={80}
-                      style={{ width: "auto", height: "auto" }}
-                    />
-                  </div>
-                  <div className="sponsor-img bb-none"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
 
       <Footer />
     </>

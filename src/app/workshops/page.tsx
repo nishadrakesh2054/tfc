@@ -5,7 +5,8 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Link from "next/link";
 import Footer from "@/components/Footer";
-
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
 // Window types are defined in types/window.d.ts
 
 export default function Workshops() {
@@ -23,7 +24,7 @@ export default function Workshops() {
     title: "Advanced Coaching Workshop",
     date: "22 March 2025",
     location: "TFC Training Ground, Lalitpur",
-    image: "/assets/img/blog.png",
+    image: "/assets/img/workshop2.png",
     description:
       "Professional coaching workshop for aspiring coaches and players. Learn advanced tactics, training methodologies, and modern football techniques from our expert coaching staff.",
     status: "upcoming",
@@ -50,78 +51,22 @@ export default function Workshops() {
 
   return (
     <>
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            {["T", "F", "C"].map((letter, i) => (
-              <span
-                key={i}
-                data-text-preloader={letter}
-                className="letters-loading"
-              >
-                {" "}
-                {letter}{" "}
-              </span>
-            ))}
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className={`col-3 loader-section ${
-                  i < 2 ? "section-left" : "section-right"
-                }`}
-              >
-                <div className="bg"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                Coaching Workshop
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>Workshops</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb
+        title="Coaching Workshop"
+        items={[{ label: "Home", href: "/" }, { label: "Workshops" }]}
+      />
 
       {/* Workshop Hero Section */}
-      <section className="section-padding" style={{ paddingTop: "80px" }}>
+      <section
+        className="section-padding"
+        style={{ paddingTop: "80px", paddingBottom: "80px" }}
+      >
         <div className="container">
-          <div className="row g-5 align-items-start">
+          <div className="row g-5 align-items-center">
             {/* Left Side - Image */}
             <div className="col-lg-6 wow fadeInLeft" data-wow-delay=".3s">
               <div
@@ -143,23 +88,6 @@ export default function Workshops() {
                     display: "block",
                   }}
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "30px",
-                    left: "30px",
-                    backgroundColor: "#e74c3c",
-                    color: "#fff",
-                    padding: "12px 24px",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: "700",
-                    textTransform: "uppercase",
-                    letterSpacing: "1px",
-                  }}
-                >
-                  {workshop.level} Level
-                </div>
               </div>
             </div>
 
@@ -168,28 +96,28 @@ export default function Workshops() {
               <div className="section-title mb-4">
                 <h6
                   style={{
-                    color: "#e74c3c",
+                    color: "var(--theme)",
                     fontSize: "16px",
                     fontWeight: "600",
                     textTransform: "uppercase",
                     letterSpacing: "2px",
-                    marginBottom: "15px",
+                    marginBottom: "5px",
                   }}
                 >
                   Professional Training
                 </h6>
                 <h2
                   className="hero_title tv_hero_title hero_title_1"
-                  style={{ marginBottom: "25px" }}
+                  style={{ marginBottom: "15px" }}
                 >
                   {workshop.title}
                 </h2>
                 <p
                   style={{
-                    fontSize: "18px",
-                    lineHeight: "1.8",
+                    fontSize: "16px",
+                    lineHeight: "1.6",
                     color: "#7f8c8d",
-                    marginBottom: "30px",
+                    marginBottom: "35px",
                   }}
                 >
                   {workshop.description}
@@ -206,12 +134,26 @@ export default function Workshops() {
                 }}
               >
                 <div className="row g-4">
-                  <div className="col-md-6">
+                  <div className="col-12 col-sm-6 col-md-6">
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        marginBottom: "20px",
+                        padding: "15px",
+                        backgroundColor: "#fff",
+                        borderRadius: "12px",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-5px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 5px 15px rgba(0,0,0,0.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 2px 8px rgba(0,0,0,0.05)";
                       }}
                     >
                       <div
@@ -224,6 +166,7 @@ export default function Workshops() {
                           alignItems: "center",
                           justifyContent: "center",
                           marginRight: "15px",
+                          flexShrink: 0,
                         }}
                       >
                         <i
@@ -231,13 +174,15 @@ export default function Workshops() {
                           style={{ color: "#fff", fontSize: "20px" }}
                         ></i>
                       </div>
-                      <div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <h6
                           style={{
-                            fontSize: "12px",
+                            fontSize: "11px",
                             color: "#95a5a6",
                             margin: 0,
+                            marginBottom: "4px",
                             textTransform: "uppercase",
+                            letterSpacing: "0.5px",
                           }}
                         >
                           Date
@@ -246,7 +191,9 @@ export default function Workshops() {
                           style={{
                             margin: 0,
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "15px",
+                            color: "#2c3e50",
+                            wordBreak: "break-word",
                           }}
                         >
                           {workshop.date}
@@ -254,12 +201,27 @@ export default function Workshops() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+
+                  <div className="col-12 col-sm-6 col-md-6">
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        marginBottom: "20px",
+                        padding: "15px",
+                        backgroundColor: "#fff",
+                        borderRadius: "12px",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-5px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 5px 15px rgba(0,0,0,0.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 2px 8px rgba(0,0,0,0.05)";
                       }}
                     >
                       <div
@@ -272,6 +234,7 @@ export default function Workshops() {
                           alignItems: "center",
                           justifyContent: "center",
                           marginRight: "15px",
+                          flexShrink: 0,
                         }}
                       >
                         <i
@@ -279,13 +242,15 @@ export default function Workshops() {
                           style={{ color: "#fff", fontSize: "20px" }}
                         ></i>
                       </div>
-                      <div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <h6
                           style={{
-                            fontSize: "12px",
+                            fontSize: "11px",
                             color: "#95a5a6",
                             margin: 0,
+                            marginBottom: "4px",
                             textTransform: "uppercase",
+                            letterSpacing: "0.5px",
                           }}
                         >
                           Duration
@@ -294,7 +259,8 @@ export default function Workshops() {
                           style={{
                             margin: 0,
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "15px",
+                            color: "#2c3e50",
                           }}
                         >
                           {workshop.duration}
@@ -302,12 +268,27 @@ export default function Workshops() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+
+                  <div className="col-12 col-sm-6 col-md-6">
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        marginBottom: "20px",
+                        padding: "15px",
+                        backgroundColor: "#fff",
+                        borderRadius: "12px",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-5px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 5px 15px rgba(0,0,0,0.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 2px 8px rgba(0,0,0,0.05)";
                       }}
                     >
                       <div
@@ -320,6 +301,7 @@ export default function Workshops() {
                           alignItems: "center",
                           justifyContent: "center",
                           marginRight: "15px",
+                          flexShrink: 0,
                         }}
                       >
                         <i
@@ -327,13 +309,15 @@ export default function Workshops() {
                           style={{ color: "#fff", fontSize: "20px" }}
                         ></i>
                       </div>
-                      <div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <h6
                           style={{
-                            fontSize: "12px",
+                            fontSize: "11px",
                             color: "#95a5a6",
                             margin: 0,
+                            marginBottom: "4px",
                             textTransform: "uppercase",
+                            letterSpacing: "0.5px",
                           }}
                         >
                           Location
@@ -342,7 +326,9 @@ export default function Workshops() {
                           style={{
                             margin: 0,
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "15px",
+                            color: "#2c3e50",
+                            wordBreak: "break-word",
                           }}
                         >
                           {workshop.location}
@@ -350,12 +336,27 @@ export default function Workshops() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6">
+
+                  <div className="col-12 col-sm-6 col-md-6">
                     <div
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        marginBottom: "20px",
+                        padding: "15px",
+                        backgroundColor: "#fff",
+                        borderRadius: "12px",
+                        transition: "all 0.3s ease",
+                        boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = "translateY(-5px)";
+                        e.currentTarget.style.boxShadow =
+                          "0 5px 15px rgba(0,0,0,0.1)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = "translateY(0)";
+                        e.currentTarget.style.boxShadow =
+                          "0 2px 8px rgba(0,0,0,0.05)";
                       }}
                     >
                       <div
@@ -368,6 +369,7 @@ export default function Workshops() {
                           alignItems: "center",
                           justifyContent: "center",
                           marginRight: "15px",
+                          flexShrink: 0,
                         }}
                       >
                         <i
@@ -375,13 +377,15 @@ export default function Workshops() {
                           style={{ color: "#fff", fontSize: "20px" }}
                         ></i>
                       </div>
-                      <div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <h6
                           style={{
-                            fontSize: "12px",
+                            fontSize: "11px",
                             color: "#95a5a6",
                             margin: 0,
+                            marginBottom: "4px",
                             textTransform: "uppercase",
+                            letterSpacing: "0.5px",
                           }}
                         >
                           Instructor
@@ -390,7 +394,8 @@ export default function Workshops() {
                           style={{
                             margin: 0,
                             fontWeight: "600",
-                            fontSize: "16px",
+                            fontSize: "15px",
+                            color: "#2c3e50",
                           }}
                         >
                           {workshop.instructor}
@@ -402,9 +407,11 @@ export default function Workshops() {
               </div>
 
               {/* CTA Button */}
-              <Link href="/register" className="theme-btn mt-4">
-                REGISTER NOW <i className="fa-solid fa-arrow-up-right"></i>
-              </Link>
+              <div style={{ marginTop: "10px" }}>
+                <Link href="/register" className="theme-btn mt-4 rounded-pill">
+                  REGISTER NOW <i className="fa-solid fa-arrow-up-right"></i>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -444,7 +451,7 @@ export default function Workshops() {
                       style={{
                         width: "40px",
                         height: "40px",
-                        backgroundColor: "#e74c3c",
+                        backgroundColor: "var(--theme)",
                         borderRadius: "50%",
                         display: "flex",
                         alignItems: "center",
@@ -492,7 +499,7 @@ export default function Workshops() {
                       style={{
                         width: "40px",
                         height: "40px",
-                        backgroundColor: "#2ecc71",
+                        backgroundColor: "var(--theme)",
                         borderRadius: "50%",
                         display: "flex",
                         alignItems: "center",
@@ -533,7 +540,7 @@ export default function Workshops() {
                   Join our Advanced Coaching Workshop and learn from the best in
                   the field
                 </p>
-                <Link href="/register" className="theme-btn mt-4">
+                <Link href="/register" className="theme-btn mt-4 rounded-pill">
                   REGISTER NOW <i className="fa-solid fa-arrow-up-right"></i>
                 </Link>
               </div>

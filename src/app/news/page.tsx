@@ -3,8 +3,10 @@
 import { useEffect } from "react";
 import Image from "next/image";
 import Header from "@/components/Header";
-import Link from "next/link";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
+import Link from "next/link";
 
 // Window types are defined in types/window.d.ts
 
@@ -20,73 +22,11 @@ export default function News() {
 
   return (
     <>
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            {["T", "F", "C"].map((letter, i) => (
-              <span
-                key={i}
-                data-text-preloader={letter}
-                className="letters-loading"
-              >
-                {" "}
-                {letter}{" "}
-              </span>
-            ))}
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className={`col-3 loader-section ${
-                  i < 2 ? "section-left" : "section-right"
-                }`}
-              >
-                <div className="bg"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                Blog Classic
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>Blog Classic</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb title="Blog Classic" items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
 
       {/* GT News-standard Section Start */}
       <section className="news-standard-section section-padding">

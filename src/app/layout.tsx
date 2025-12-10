@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+import ScrollTop from "@/components/ScrollTop";
 // Window types are defined in types/window.d.ts
 
 export const metadata: Metadata = {
@@ -92,6 +93,28 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Viewport meta tag for mobile responsiveness */}
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes"
+        />
+        {/* Suppress source map errors */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Disable source map requests
+              if (typeof window !== 'undefined') {
+                const originalFetch = window.fetch;
+                window.fetch = function(...args) {
+                  if (args[0] && typeof args[0] === 'string' && args[0].endsWith('.map')) {
+                    return Promise.reject(new Error('Source map disabled'));
+                  }
+                  return originalFetch.apply(this, args);
+                };
+              }
+            `,
+          }}
+        />
         {/* External CSS Libraries - Required for third-party plugins */}
         {/* eslint-disable-next-line @next/next/no-css-tags */}
         <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
@@ -112,54 +135,130 @@ export default function RootLayout({
       </head>
       <body>
         {children}
+        <ScrollTop />
 
-        {/* All JS Plugins */}
+        {/* All JS Plugins - optimized loading for mobile */}
         <Script
           src="/assets/js/jquery-3.7.1.min.js"
           strategy="beforeInteractive"
         />
-        <Script
-          src="/assets/js/viewport.jquery.js"
-          strategy="afterInteractive"
-        />
+
+        {/* Load critical scripts first with proper dependencies */}
         <Script
           src="/assets/js/bootstrap.bundle.min.js"
           strategy="afterInteractive"
         />
-        <Script
-          src="/assets/js/jquery.nice-select.min.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="/assets/js/jquery.waypoints.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="/assets/js/jquery.counterup.min.js"
-          strategy="afterInteractive"
-        />
+
         <Script
           src="/assets/js/swiper-bundle.min.js"
           strategy="afterInteractive"
+        />
+
+        {/* WOW.js - needed early for animations */}
+        <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
+
+        {/* jQuery plugins - load after jQuery is ready, defer non-critical */}
+        <Script
+          src="/assets/js/viewport.jquery.js"
+          strategy="lazyOnload"
+        />
+        <Script
+          src="/assets/js/jquery.nice-select.min.js"
+          strategy="lazyOnload"
+        />
+        <Script
+          src="/assets/js/jquery.waypoints.js"
+          strategy="lazyOnload"
+        />
+        <Script
+          src="/assets/js/jquery.counterup.min.js"
+          strategy="lazyOnload"
         />
         <Script
           src="/assets/js/jquery.meanmenu.min.js"
           strategy="afterInteractive"
         />
-        <Script src="/assets/js/parallaxie.js" strategy="afterInteractive" />
         <Script
           src="/assets/js/jquery.magnific-popup.min.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script src="/assets/js/wow.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/gsap.min.js" strategy="afterInteractive" />
+
+        {/* Other plugins - lazy load non-critical */}
+        <Script src="/assets/js/parallaxie.js" strategy="lazyOnload" />
+        <Script src="/assets/js/gsap.min.js" strategy="lazyOnload" />
         <Script
           src="/assets/js/ScrollTrigger.min.js"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script src="/assets/js/SplitText.min.js" strategy="afterInteractive" />
-        <Script src="/assets/js/splitType.js" strategy="afterInteractive" />
+        <Script src="/assets/js/SplitText.min.js" strategy="lazyOnload" />
+        <Script src="/assets/js/splitType.js" strategy="lazyOnload" />
         <Script src="/assets/js/main.js" strategy="afterInteractive" />
+
+        {/* Suppress console errors for missing source maps and improve mobile loading */}
+        <Script
+          id="suppress-source-map-errors"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (typeof window !== 'undefined') {
+                  // Suppress 404 errors for .map files in console
+                  const originalError = console.error;
+                  console.error = function(...args) {
+                    const message = args[0];
+                    if (typeof message === 'string' && (
+                      message.includes('.map') || 
+                      message.includes('source map') ||
+                      message.includes('sourceMapURL')
+                    )) {
+                      return; // Suppress source map related errors
+                    }
+                    originalError.apply(console, args);
+                  };
+                  
+                  // Suppress fetch errors for .map files
+                  window.addEventListener('error', function(e) {
+                    if (e.target && e.target.src && e.target.src.endsWith('.map')) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      return false;
+                    }
+                  }, true);
+                  
+                  // Handle unhandled promise rejections for .map files
+                  window.addEventListener('unhandledrejection', function(e) {
+                    if (e.reason && typeof e.reason === 'string' && e.reason.includes('.map')) {
+                      e.preventDefault();
+                    }
+                  });
+                  
+                  // Retry mechanism for failed script loads on mobile
+                  function retryScriptLoad(scriptSrc, maxRetries = 2) {
+                    return new Promise((resolve, reject) => {
+                      let retries = 0;
+                      function attemptLoad() {
+                        const script = document.createElement('script');
+                        script.src = scriptSrc;
+                        script.async = true;
+                        script.onload = () => resolve();
+                        script.onerror = () => {
+                          retries++;
+                          if (retries < maxRetries) {
+                            setTimeout(attemptLoad, 1000 * retries);
+                          } else {
+                            reject(new Error('Failed to load: ' + scriptSrc));
+                          }
+                        };
+                        document.body.appendChild(script);
+                      }
+                      attemptLoad();
+                    });
+                  }
+                }
+              })();
+            `,
+          }}
+        />
       </body>
     </html>
   );

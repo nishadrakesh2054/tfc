@@ -145,6 +145,7 @@ export default function TestimonialSection() {
                                   alt="Quote Icon"
                                   width={50}
                                   height={50}
+                                  loading="lazy"
                                 />
                               </div>
                               <p
@@ -167,6 +168,7 @@ export default function TestimonialSection() {
                                         borderRadius: "50%",
                                         transition: "transform 0.3s ease",
                                       }}
+                                      loading="lazy"
                                       onMouseEnter={(e) => {
                                         e.currentTarget.style.transform =
                                           "scale(1.1)";
@@ -183,6 +185,7 @@ export default function TestimonialSection() {
                                       width={60}
                                       height={60}
                                       style={{ width: "auto", height: "60px" }}
+                                      loading="lazy"
                                     />
                                   )}
                                   <div className="content">
@@ -209,7 +212,7 @@ export default function TestimonialSection() {
                                       style={{
                                         color:
                                           index < testimonial.rating
-                                            ? "#FE5900"
+                                            ? "var(--gold)"
                                             : "#ddd",
                                         transition: "all 0.3s ease",
                                         animation:
@@ -235,6 +238,7 @@ export default function TestimonialSection() {
                                 alt="Quote Icon"
                                 width={50}
                                 height={50}
+                                loading="lazy"
                               />
                             </div>
                             <p style={{ fontSize: "15px", lineHeight: "1.6" }}>
@@ -250,6 +254,7 @@ export default function TestimonialSection() {
                                   width={60}
                                   height={60}
                                   style={{ width: "auto", height: "60px" }}
+                                  loading="lazy"
                                 />
                                 <div className="content">
                                   <h4
@@ -264,11 +269,26 @@ export default function TestimonialSection() {
                                 </div>
                               </div>
                               <div className="star">
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
-                                <i className="fa-solid fa-star"></i>
+                                <i
+                                  className="fa-solid fa-star"
+                                  style={{ color: "var(--gold)" }}
+                                ></i>
+                                <i
+                                  className="fa-solid fa-star"
+                                  style={{ color: "var(--gold)" }}
+                                ></i>
+                                <i
+                                  className="fa-solid fa-star"
+                                  style={{ color: "var(--gold)" }}
+                                ></i>
+                                <i
+                                  className="fa-solid fa-star"
+                                  style={{ color: "var(--gold)" }}
+                                ></i>
+                                <i
+                                  className="fa-solid fa-star"
+                                  style={{ color: "var(--gold)" }}
+                                ></i>
                               </div>
                             </div>
                           </div>
@@ -286,13 +306,25 @@ export default function TestimonialSection() {
               <div className="col-lg-6">
                 <div className="testimonial-right-items">
                   <div className="section-title">
-                    <h6 className="wow fadeInUp">What Our Fans Say</h6>
-                    <h2 className="text-white hero_title tv_hero_title hero_title_1">
-                      Loved by Players, <span>fans,</span> <br />
+                    <h6
+                      className="wow fadeInUp"
+                      style={{ color: "var(--gold)" }}
+                    >
+                      What Our Fans Say
+                    </h6>
+                    <h2
+                      className="text-white hero_title tv_hero_title hero_title_1"
+                      style={{ color: "var(--gold)" }}
+                    >
+                      Loved by Players,{" "}
+                      <span style={{ color: "var(--gold)", border: "none" }}>
+                        fans,
+                      </span>{" "}
+                      <br />
                       and families
                     </h2>
                   </div>
-                  <div className="row g-4">
+                  <div className="row g-4 align-items-start">
                     <div className="col-md-6 wow fadeInUp" data-wow-delay=".3s">
                       <div className="testi-count">
                         <Image
@@ -301,6 +333,7 @@ export default function TestimonialSection() {
                           width={200}
                           height={100}
                           style={{ width: "auto", height: "auto" }}
+                          loading="lazy"
                         />
                       </div>
                       <div className="array-button d-flex align-items-center">
@@ -367,14 +400,17 @@ export default function TestimonialSection() {
                       </div>
                     </div>
                     <div className="col-md-6 wow fadeInUp" data-wow-delay=".5s">
-                      <div className="image">
-                        <Image
-                          src="/assets/img/football.png"
-                          alt="Testimonial"
-                          width={300}
-                          height={400}
-                          style={{ width: "100%", height: "auto" }}
-                        />
+                      <div className="testimonial-stats">
+                        <h3 className="text-white mb-3">
+                          Trusted by Thousands
+                        </h3>
+                        <p
+                          className="text-white-50"
+                          style={{ fontSize: "14px", lineHeight: "1.6" }}
+                        >
+                          Join our community of satisfied players and families
+                          who have experienced excellence in football training.
+                        </p>
                       </div>
                     </div>
                   </div>

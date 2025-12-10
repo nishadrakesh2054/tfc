@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
 
 // Window types are defined in types/window.d.ts
 
@@ -23,77 +24,14 @@ export default function Contact() {
 
   return (
     <>
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            <span data-text-preloader="T" className="letters-loading">
-              {" "}
-              T{" "}
-            </span>
-            <span data-text-preloader="F" className="letters-loading">
-              {" "}
-              F{" "}
-            </span>
-            <span data-text-preloader="C" className="letters-loading">
-              {" "}
-              C{" "}
-            </span>
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            <div className="col-3 loader-section section-left">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-left">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-right">
-              <div className="bg"></div>
-            </div>
-            <div className="col-3 loader-section section-right">
-              <div className="bg"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                Contacts
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>Contacts</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb
+        title="Contacts"
+        items={[{ label: "Home", href: "/" }, { label: "Contacts" }]}
+      />
 
       <section className="contact-info-section fix">
         <div className="container">

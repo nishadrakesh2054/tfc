@@ -6,7 +6,13 @@ declare global {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Swiper?: any;
     WOW?: {
-      new (): {
+      new (config?: {
+        boxClass?: string;
+        animateClass?: string;
+        offset?: number;
+        mobile?: boolean;
+        live?: boolean;
+      }): {
         init: () => void;
       };
     };

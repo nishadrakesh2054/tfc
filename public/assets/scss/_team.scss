@@ -54,12 +54,12 @@
           display: inline;
 
           &:hover {
-            color: $theme-color;
+            color: var(--gold);
             background-size: 100% 2px;
             background-image: linear-gradient(
               180deg,
-              $theme-color 0%,
-              $theme-color 100%
+              var(--gold) 0%,
+              var(--gold) 100%
             );
           }
         }

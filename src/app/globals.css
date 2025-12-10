@@ -1,0 +1,22 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotating-loader {
+  animation: rotate 2s linear infinite;
+}
+
+.about-image-wrapper {
+  width: 100%;
+}
+
+.about-image-fill {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 670;
+}

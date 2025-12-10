@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 
-export default function Footer() {
+function Footer() {
   return (
     <footer
       className="footer-section section-padding pb-0 bg-cover"
@@ -18,11 +19,12 @@ export default function Footer() {
                 <div className="widget-head">
                   <Link href="/">
                     <Image
-                      src="/assets/img/logo3.png"
-                      alt="img"
+                      src="/assets/img/logo2.png"
+                      alt="Thunderbolts FC Logo"
                       width={150}
-                      height={80}
-                      style={{ width: "auto", height: "80px" }}
+                      height={65}
+                      style={{ width: "auto", height: "65px" }}
+                      loading="lazy"
                     />
                   </Link>
                 </div>
@@ -106,6 +108,7 @@ export default function Footer() {
                           maxHeight: "60px",
                           objectFit: "contain",
                         }}
+                        loading="lazy"
                       />
                     </div>
                     <div className="col-6">
@@ -120,6 +123,7 @@ export default function Footer() {
                           maxHeight: "60px",
                           objectFit: "contain",
                         }}
+                        loading="lazy"
                       />
                     </div>
                     <div className="col-6">
@@ -134,6 +138,7 @@ export default function Footer() {
                           maxHeight: "60px",
                           objectFit: "contain",
                         }}
+                        loading="lazy"
                       />
                     </div>
                     <div className="col-6">
@@ -148,6 +153,7 @@ export default function Footer() {
                           maxHeight: "60px",
                           objectFit: "contain",
                         }}
+                        loading="lazy"
                       />
                     </div>
                   </div>
@@ -176,3 +182,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default memo(Footer);

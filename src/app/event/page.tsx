@@ -5,6 +5,8 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
 
 // Window types are defined in types/window.d.ts
 
@@ -120,21 +122,6 @@ export default function Event() {
     },
   ];
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "tournament":
-        return "#e74c3c";
-      case "workshop":
-        return "#3498db";
-      case "match":
-        return "#2ecc71";
-      case "community":
-        return "#f39c12";
-      default:
-        return "#95a5a6";
-    }
-  };
-
   const getCategoryLabel = (category: string) => {
     switch (category) {
       case "tournament":
@@ -152,73 +139,14 @@ export default function Event() {
 
   return (
     <>
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            {["T", "F", "C"].map((letter, i) => (
-              <span
-                key={i}
-                data-text-preloader={letter}
-                className="letters-loading"
-              >
-                {" "}
-                {letter}{" "}
-              </span>
-            ))}
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className={`col-3 loader-section ${
-                  i < 2 ? "section-left" : "section-right"
-                }`}
-              >
-                <div className="bg"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                Events & Tournaments
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>Events</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb
+        title="Events & Tournaments"
+        items={[{ label: "Home", href: "/" }, { label: "Events" }]}
+      />
 
       {/* Events Section Start */}
       <section className="news-standard-section section-padding">
@@ -251,7 +179,7 @@ export default function Event() {
                             position: "absolute",
                             top: "20px",
                             right: "20px",
-                            backgroundColor: getCategoryColor(event.category),
+                            backgroundColor: "var(--theme)",
                             color: "#fff",
                             padding: "8px 16px",
                             borderRadius: "4px",
@@ -289,7 +217,7 @@ export default function Event() {
                         <p>{event.description}</p>
                         <Link
                           href={`/event/${event.id}`}
-                          className="theme-btn mt-4"
+                          className="theme-btn mt-4 rounded-pill"
                         >
                           VIEW DETAILS{" "}
                           <i className="fa-solid fa-arrow-up-right"></i>
@@ -389,9 +317,7 @@ export default function Event() {
                         </span>
                       </li>
                       <li>
-                        <Link href="/event?category=workshop">
-                           Workshops
-                        </Link>
+                        <Link href="/event?category=workshop">Workshops</Link>
                         <span>
                           (
                           {

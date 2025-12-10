@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { memo } from "react";
 
-export default function SponsorSection() {
+function SponsorSection() {
   return (
     <section
       className="sponsor-section section-padding bg-cover"
@@ -14,8 +15,14 @@ export default function SponsorSection() {
           </h2>
         </div>
         <div className="sponsor-wrapper-21">
-          <div className="table-responsive">
-            <div className="sponsor-wrap">
+          <div
+            className="table-responsive"
+            style={{ overflowX: "hidden", width: "100%" }}
+          >
+            <div
+              className="sponsor-wrap"
+              style={{ width: "100%", maxWidth: "100%" }}
+            >
               <div className="sponsor-box-items">
                 <div className="sponsor-img bb-none"></div>
                 <div className="sponsor-img">
@@ -30,6 +37,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -45,6 +53,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -60,6 +69,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -75,6 +85,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -92,6 +103,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -107,6 +119,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -122,6 +135,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -137,6 +151,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -152,6 +167,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -169,6 +185,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -184,6 +201,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -199,6 +217,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -214,6 +233,7 @@ export default function SponsorSection() {
                       maxWidth: "110px",
                       maxHeight: "75px",
                     }}
+                    loading="lazy"
                   />
                 </div>
                 <div className="sponsor-img bb-none"></div>
@@ -225,3 +245,5 @@ export default function SponsorSection() {
     </section>
   );
 }
+
+export default memo(SponsorSection);

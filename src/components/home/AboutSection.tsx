@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
+import { memo } from "react";
 
-export default function AboutSection() {
+function AboutSection() {
   return (
     <section className="about-section fix ">
       {/* Quote Section - Center of Screen */}
@@ -31,7 +32,7 @@ export default function AboutSection() {
                 marginBottom: "30px",
               }}
             >
-              <h2
+              <h1
                 className="quote-text hero_title tv_hero_title hero_title_1 quote-text-responsive"
                 style={{
                   fontWeight: "900",
@@ -42,10 +43,10 @@ export default function AboutSection() {
                   wordBreak: "break-word",
                 }}
               >
-                Rise with <span>Thunder</span>
+                Rise with <span style={{ color: "var(--theme)" }}>Thunder</span>
                 <br />
-                Rise for <span>Nepali Football</span>
-              </h2>
+                Rise for <span style={{ color: "var(--theme)" }}>Nepali Football</span>
+              </h1>
             </div>
           </div>
         </div>
@@ -58,6 +59,7 @@ export default function AboutSection() {
           width={200}
           height={400}
           style={{ width: "auto", height: "auto" }}
+          loading="lazy"
         />
       </div>
       <div className="right-shape">
@@ -67,34 +69,35 @@ export default function AboutSection() {
           width={200}
           height={400}
           style={{ width: "auto", height: "auto" }}
+          loading="lazy"
         />
       </div>
       <div className="container">
         <div className="about-wrapper">
-          <div className="row g-4">
-            <div className="col-lg-6 wow fadeInUp" data-wow-delay=".3s">
-              <div className="about-image">
-                <Image
-                  src="/assets/img/aboutmiddle.png"
-                  alt="About Thunderbolts FC"
-                  width={500}
-                  height={600}
-                  style={{ width: "100%", height: "auto" }}
-                />
+          <div className="row g-4 align-items-center">
+            <div className="col-lg-6 wow fadeInUp " data-wow-delay=".3s">
+              <div className="about-image ">
+              <Image
+  src="/assets/img/tfc.png"
+  alt="About Thunderbolts FC"
+  width={530}
+  height={500}
+  style={{ width: "100%", height: "auto", objectFit: "contain" }}
+  loading="lazy"
+/>
+
               </div>
             </div>
             <div className="col-lg-6">
               <div className="about-content">
                 <div className="section-title mb-0">
-                  <h6 className="wow fadeInUp">
-                    Built on Passion. Driven by Unity.
-                  </h6>
+            
                   <h2 className="hero_title tv_hero_title hero_title_1">
                     Built on{" "}
-                    <span style={{ display: "block", marginTop: "10px" }}>
+                    <span style={{  marginTop: "5px" }}>
                       passion.
                     </span>{" "}
-                    <br />
+                <br />
                     Driven by Unity.
                   </h2>
                 </div>
@@ -132,7 +135,7 @@ export default function AboutSection() {
                 </div>
                 <Link
                   href="/about"
-                  className="theme-btn wow fadeInUp"
+                  className="theme-btn wow fadeInUp rounded-pill"
                   data-wow-delay=".7s"
                 >
                   MORE ABOUT US <i className="fa-solid fa-arrow-up-right"></i>
@@ -145,3 +148,5 @@ export default function AboutSection() {
     </section>
   );
 }
+
+export default memo(AboutSection);

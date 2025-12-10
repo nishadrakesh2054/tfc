@@ -5,7 +5,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import Image from "next/image";
-
+import Preloader from "@/components/Preloader";
+import Breadcrumb from "@/components/Breadcrumb";
 // Window types are defined in types/window.d.ts
 
 export default function Team() {
@@ -122,73 +123,11 @@ export default function Team() {
 
   return (
     <>
-      <div id="preloader" className="preloader">
-        <div className="animation-preloader">
-          <div className="spinner"></div>
-          <div className="txt-loading">
-            {["T", "F", "C"].map((letter, i) => (
-              <span
-                key={i}
-                data-text-preloader={letter}
-                className="letters-loading"
-              >
-                {" "}
-                {letter}{" "}
-              </span>
-            ))}
-          </div>
-          <p className="text-center">Loading</p>
-        </div>
-        <div className="loader">
-          <div className="row">
-            {[...Array(4)].map((_, i) => (
-              <div
-                key={i}
-                className={`col-3 loader-section ${
-                  i < 2 ? "section-left" : "section-right"
-                }`}
-              >
-                <div className="bg"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <button id="back-top" className="back-to-top">
-        <i className="fa-regular fa-arrow-up"></i>
-      </button>
-      <div className="mouseCursor cursor-outer"></div>
-      <div className="mouseCursor cursor-inner"></div>
+      <Preloader />
 
       <Header />
 
-      <div
-        className="gt-breadcrumb-wrapper bg-cover"
-        style={{ backgroundImage: "url('/assets/img/breadcrumb-bg.jpg')" }}
-      >
-        <div className="container">
-          <div className="gt-page-heading">
-            <div className="gt-breadcrumb-sub-title">
-              <h1 className="text-white wow fadeInUp" data-wow-delay=".3s">
-                Our Team
-              </h1>
-            </div>
-            <ul
-              className="gt-breadcrumb-items wow fadeInUp"
-              data-wow-delay=".5s"
-            >
-              <li>
-                <Link href="/"> Home </Link>
-              </li>
-              <li>
-                <i className="fa-solid fa-chevron-right"></i>
-              </li>
-              <li>Our Team</li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <Breadcrumb title="Our Team" items={[{ label: "Home", href: "/" }, { label: "Team" }]} />
 
       <section className="team-section fix section-padding">
         <div className="container">
