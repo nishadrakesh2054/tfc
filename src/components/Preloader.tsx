@@ -17,21 +17,7 @@ export default function Preloader() {
           />
         </div>
 
-        <div className="txt-loading">
-          <span data-text-preloader="T" className="letters-loading">
-            {" "}
-            T{" "}
-          </span>
-          <span data-text-preloader="F" className="letters-loading">
-            {" "}
-            F{" "}
-          </span>
-          <span data-text-preloader="C" className="letters-loading">
-            {" "}
-            C{" "}
-          </span>
-        </div>
-        <p className="text-center">Loading</p>
+        <p className="text-center">Loading ... </p>
       </div>
       <div className="loader">
         <div className="row">

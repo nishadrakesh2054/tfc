@@ -5565,16 +5565,16 @@ span {
 
 /* Default (Desktop & Tablet) */
 .mobile-bg-control {
-    background-size: contain;
+  background-size: contain;
+}
+
+/* Mobile only */
+@media (max-width: 767px) {
+  .mobile-bg-control {
+    background-size: cover;
   }
-  
-  /* Mobile only */
-  @media (max-width: 767px) {
-    .mobile-bg-control {
-      background-size: cover;
-    }
-  }
-  
+}
+
 .hero-2::before {
   position: absolute;
   top: 0;
@@ -5587,7 +5587,7 @@ span {
   /* background: linear-gradient(251deg, var(--Text-Primary, #030523) 3.32%, rgba(3, 5, 35, 0.48) 50.97%); */
   background: linear-gradient(
     to bottom,
-    var(--Text-Primary, #030523) 1.32%,
+    var(--Text-Primary, #02085e) 1.32%,
     rgba(3, 5, 35, 0.48) 15%,
     rgba(3, 5, 35, 0) 25%
   );
@@ -7528,98 +7528,20 @@ span {
   z-index: 1000;
 }
 .preloader .animation-preloader .spinner {
-  animation: spinner 1s infinite linear;
-  border-radius: 50%;
-  border: 3px solid var(--gold);
-  border-top-color: var(--theme);
-  height: 9em;
   margin: 0 auto 3.5em auto;
-  width: 9em;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .preloader .animation-preloader .spinner .spinner-logo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  animation: spinner 1s infinite linear;
   object-fit: contain;
   z-index: 2;
 }
 @media (max-width: 767px) {
   .preloader .animation-preloader .spinner {
-    width: 7.5em;
-    height: 7.5em;
     margin: 0 auto 1.5em auto;
   }
-}
-.preloader .animation-preloader .txt-loading {
-  font: 500 5em "Big Shoulders", sans-serif, "Chakra Petch", sans-serif;
-  text-align: center;
-  user-select: none;
-  font-family: "Big Shoulders", sans-serif;
-  font-weight: 700;
-}
-@media (max-width: 767px) {
-  .preloader .animation-preloader .txt-loading {
-    font-size: 2.5em;
-  }
-}
-.preloader .animation-preloader .txt-loading .letters-loading {
-  color: var(--theme);
-  position: relative;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(2):before {
-  animation-delay: 0.2s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(3):before {
-  animation-delay: 0.4s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(4):before {
-  animation-delay: 0.6s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(5):before {
-  animation-delay: 0.8s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(6):before {
-  animation-delay: 1s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(7):before {
-  animation-delay: 1.2s;
-}
-.preloader
-  .animation-preloader
-  .txt-loading
-  .letters-loading:nth-child(8):before {
-  animation-delay: 1.4s;
-}
-.preloader .animation-preloader .txt-loading .letters-loading::before {
-  animation: letters-loading 4s infinite;
-  color: var(--header);
-  content: attr(data-text-preloader);
-  left: 0;
-  opacity: 0;
-  font-family: "Big Shoulders", sans-serif;
-  position: absolute;
-  top: -3px;
-  transform: rotateY(-90deg);
 }
 .preloader p {
   font-size: 16px;
@@ -7798,7 +7720,7 @@ span {
   background-position: 0 95%;
   background-repeat: no-repeat;
   background-size: 0% 2px;
-  display: inline;  
+  display: inline;
 }
 .our-club-payer-item .player-image .player-content h4 a:hover {
   color: var(--gold);
